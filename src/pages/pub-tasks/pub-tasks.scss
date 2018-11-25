@@ -1,0 +1,35 @@
+page-pub-tasks {
+  .button-dark {
+    background-color: $dark;
+  }
+
+  .toleft {
+    float: left;
+  }
+
+  .toright {
+    float: right;
+  }
+
+  .xicon {
+    font-size: 30px;
+    color: color($colors, dark, base);
+  }
+
+  .delete-icon {
+    width: 26px;
+    height: 23px;
+    background-size: 26px 23px;
+    background-image: url(../assets/imgs/delete.svg);
+  }
+
+  .done-icon {
+    width: 26px;
+    height: 23px;
+  }
+
+  img {
+    vertical-align: middle;
+  }
+
+}

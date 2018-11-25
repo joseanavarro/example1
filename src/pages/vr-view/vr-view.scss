@@ -1,0 +1,24 @@
+page-vr-view {
+  .w2w-td-thumb {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #PanoWrapper {
+    z-index: 9999;
+  }
+
+  #PanoWrapper.normalPano {
+    height: 60vh;
+    position: relative;
+  }
+
+  #PanoWrapper.fullscreenPano {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}

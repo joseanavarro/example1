@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'more_panos' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <h2>&nbsp;{{ tour.title }}</h2>
+
+  <div class="w2w-item-title">&nbsp;&nbsp;{{ areaname }}</div>
+  <br/>
+  <div class="w2w-tl-container">
+    <ion-card text-center *ngIf="notLoaded">
+      <ion-spinner name="bubbles"></ion-spinner>
+    </ion-card>
+
+    <div class="w2w-item-note">
+      &nbsp;
+      <ion-icon name="arrow-dropright" item-left>&nbsp;{{'touch_to_open_panos' | translate}}</ion-icon>
+    </div>
+    <br/>
+    <br/>
+
+    <div class="w2w-tl-item" *ngFor="let pano of panos">
+      <tour-thumb [pano]="pano" [tour]="tour" [areaname]="areaname"></tour-thumb>
+    </div>
+  </div>
+
+</ion-content>

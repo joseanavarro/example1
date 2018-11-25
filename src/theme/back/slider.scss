@@ -1,0 +1,22 @@
+.slider-view{
+
+  .slider-pager-page {
+    color: white !important;
+  }
+
+  .slider-pager-page.active {
+    color: $dark !important;
+  }
+
+  .slider-slide {
+    padding-top: 50px;
+    padding-right: 8px;
+    padding-left: 8px;
+    color: #000;
+    text-align: center;
+
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 500;
+  }
+
+}

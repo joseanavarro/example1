@@ -1,0 +1,64 @@
+route-item {
+  .w2w-tl-item {
+    @media screen and (min-width: 630px) {
+      width: 48%;
+      margin: 1%;
+      background-color: #f9f9f9;
+      float: left;
+    }
+  }
+  .w2w-tl-item-header {
+    position: relative;
+    height: 60px;
+    .w2w-tl-location {
+      position: absolute;
+      top: 32px;
+      left: 55px;
+      right: 30%;
+      font-weight: lighter;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #a5a6a9;
+    }
+    .w2w-tl-time {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 12px;
+    }
+  }
+  .w2w-tl-thumb {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-bottom: 40%;
+    position: relative;
+    .w2w-pl-title {
+      position: absolute;
+      bottom: 5px;
+      left: 5px;
+      color: #fff;
+      text-shadow: 2px 2px 4px #000000;
+      font-size: 20px;
+      line-height: 25px;
+      right: 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  .w2w-tl-item-description {
+    position: relative;
+    overflow: hidden;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.1);
+    @media screen and (min-width: 600px) {
+      height: 65px;
+    }
+  }
+}

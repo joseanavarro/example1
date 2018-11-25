@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'edit_tour' | translate}}</ion-title>
+    <ion-buttons end>
+      <a (click)="goBack()">
+        <ion-icon name="close-circle" class="micon"></ion-icon>
+      </a>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="gem-ion-content single-post">
+  <ion-item>
+    <ion-label stacked>
+      {{'tour_title' | translate}}
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="tour.title">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>
+      {{'tour_description' | translate}}
+    </ion-label>
+    <ion-textarea type="text" [(ngModel)]="tour.description">
+    </ion-textarea>
+  </ion-item>
+
+  <div padding>
+    <button ion-button block class="button-dark" (click)="editTexts()">{{'edit_texts' | translate}}</button>
+    <ion-item no-lines>
+      <ion-label stacked>{{'location' | translate}}: </ion-label>:
+    </ion-item>
+    <ion-item>
+      {{ location }}
+    </ion-item>
+    <button ion-button block class="button-dark" (click)="goMap()">{{'edit_location' | translate}}</button>
+    <hr/>
+    <div>
+      <button ion-button block class="button-dark" (click)="showAreas(tour, tour_areas)">{{'edit_scenes' | translate}}</button>
+    </div>
+    <button ion-button block [ngClass]="{'button-dark' : (pubhide), 'button-primary':(!pubhide)}" (click)="pubhideTour()">{{txtPubhide}}</button>
+    <button ion-button block class="button-dark" (click)="deleteTour()">{{'delete_tour' | translate}}</button>
+
+  </div>
+</ion-content>

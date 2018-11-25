@@ -1,0 +1,24 @@
+<ion-navbar hideBackButton="true">
+  <ion-row>
+    <ion-col [ngClass]="getClass(1)" (click)="clickAction(1)">
+      <div>
+        <ion-icon name="person"></ion-icon>
+        <br/> {{'information' | translate}}</div>
+    </ion-col>
+    <ion-col [ngClass]="getClass(2)" (click)="clickAction(2)">
+      <div>
+        <ion-icon name="apps"></ion-icon>
+        <br/> {{'publications' | translate}}</div>
+    </ion-col>
+    <ion-col [ngClass]="getClass(3)" (click)="clickAction(3)">
+      <div>
+        <ion-icon name="contacts"></ion-icon>
+        <br/> {{'followers' | translate}}</div>
+    </ion-col>
+    <ion-col [ngClass]="getClass(4)" (click)="clickAction(4)">
+      <div>
+        <ion-icon name="eye"></ion-icon>
+        <br/> {{'following' | translate}}</div>
+    </ion-col>
+  </ion-row>
+</ion-navbar>

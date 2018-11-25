@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'edit_arrows' | translate}}</ion-title>
+    <ion-buttons end>
+      <a (click)="goBack()">
+        <ion-icon name="close-circle" class="micon"></ion-icon>
+      </a>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="!viewPanos">
+    <div class="w2w-item-title" padding>{{'panoramas_to_connect' | translate}}</div>
+    <div padding>
+      {{'no_pano_to_connect' | translate}}
+    </div>
+
+  </div>
+
+  <div *ngIf="viewPanos">
+    <div class="w2w-item-title" padding>{{'panoramas_to_connect' | translate}}</div>
+    <div padding>
+      {{'touch_to_connect_pano' | translate}}
+    </div>
+
+    <div class="w2w-tl-item" *ngFor="let pano of panos">
+      <edit-tour-thumb [pano]="pano" [tour]="tour" [areaname]="areaname" [connect1]="panoId" *ngIf="pano.id_pano !== panoId"></edit-tour-thumb>
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,138 @@
+<ion-header>
+
+  <ion-navbar *ngIf="!isRoot">
+    <ion-title>{{'details' | translate}}</ion-title>
+    <ion-buttons end>
+      <a (click)="alertTour(pano)">
+        <ion-icon name="alert" class="micon"></ion-icon>
+      </a>
+      &nbsp;&nbsp;
+      <a (click)="shareTour(pano)">
+        <ion-icon name="share" class="micon"></ion-icon>
+      </a>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar *ngIf="isRoot">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{'details' | translate}}</ion-title>
+    <ion-buttons end>
+      <a (click)="alertTour(pano)">
+        <ion-icon name="alert" class="micon"></ion-icon>
+      </a>
+      &nbsp;&nbsp;
+      <a (click)="shareTour(pano)">
+        <ion-icon name="share" class="micon"></ion-icon>
+      </a>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="gem-ion-content single-post">
+  <div id="PanoWrapper" class="w2w-td-thumb normalPano" [ngStyle]="getPanoImage(pano)">
+    <div id="PanoContainer" style="height:100%;width:100%"></div>
+  </div>
+
+  <div class="w2w-tl-item-options">
+    <i class="w2w-tl-item-likes-icon-liked" *ngIf="liked" (click)="like(tour,false)"></i>
+    <i class="w2w-tl-item-likes-icon" *ngIf="!liked" (click)="like(tour,true)"></i>
+    <span class="w2w-tl-item-stat">{{ tour.likes }}</span>
+    <i class="w2w-tl-item-comments-icon" (click)="showMoreComments(tour)"></i>
+    <span class="w2w-tl-item-stat">{{ tour.total_comentarios }}</span>
+    <i class="w2w-tl-item-views-icon"></i>
+    <span class="w2w-tl-item-stat">{{ tour.visualizaciones }}</span>
+    <a class="feed-category" (click)="enterVR()"><img src="assets/imgs/cardboard.svg" alt="" height="22px"></a>
+
+    <i class="w2w-tl-item-map-icon" (click)="openMap(tour)"></i>
+
+    <!--i class="w2w-tl-item-options-icon" *ngIf="tour.can_edit" (click)="edit(tour,panoData)"></i-->
+  </div>
+
+  <div class="w2w-tl-item-header">
+    <a (click)="photographerProfile(tour.userId)">
+      <ion-item no-lines>
+        <ion-avatar item-left>
+          <img [src]="getProfilePic(tour)">
+        </ion-avatar>
+        <h2>{{ tour.nombre }}&nbsp;{{ tour.apellidos }}</h2>
+
+      </ion-item>
+    </a>
+
+    <div class="w2w-tl-time">{{ tour.creation | date : "dd/MM/y" }} </div>
+  </div>
+
+  <div class="w2w-tl-location">
+
+    <div class="w2w-tl-item-icon-location"></div>
+    &nbsp;&nbsp;
+    <div class="w2w-item-title">{{ panoTitle }}</div>
+    <br /> &nbsp;&nbsp;
+    <div class="w2w-item-subtitle" *ngIf="extrapano">{{ areaname }}</div>
+
+    <br /> &nbsp;
+    <div (click)="openMap(tour)">
+      &nbsp;
+      <ion-icon name="pin" item-left>&nbsp;{{ locationName }} </ion-icon>
+      &nbsp;
+      <!--ion-icon name="map">&nbsp;
+        <b>{{'open_map' | translate}}</b>
+      </ion-icon-->
+    </div>
+    <br />
+  </div>
+
+  <div class="show-more" [ngClass]="showmoreclass" (click)="showMore()">
+    <div class="show-more-content">{{ panoDescription }}</div>
+    <div class="show-more-text">{{'view_more' | translate}}...</div>
+  </div>
+
+  <!--div padding>
+    <button ion-button block class="button-dark" type="submit" (click)="getPanoAngle()">Leer pano</button>
+  </div-->
+
+  <div *ngIf="moreAreas" padding>
+    <button ion-button block class="button-dark" type="submit" (click)="showAreas(tour, tour_areas)">{{'continue_tour'
+      | translate}}</button>
+  </div>
+  <div *ngIf="morePanos" padding>
+    <button ion-button block class="button-dark" type="submit" (click)="showMorePanos(tour)">{{'continue_tour' |
+      translate}}</button>
+  </div>
+
+  <div class="w2w-comments">
+    <div class="w2w-comments-title">{{'comments' | translate}}</div>
+
+    <div class="w2w-comment" *ngIf="isLogged">
+      <div class="w2w-comment-warn">
+        <a href="#" (click)="reportInadequate2(comment.id, 3)">
+          <i class="icon ion-alert"></i>
+        </a>
+      </div>
+      <div class="w2w-comment-avatar" [ngStyle]="getUserAvatar()"></div>
+      <ion-textarea id="vistComment" ng-blur="hideStatusBar()" msd-elastic placeholder="{{'write_comment' | translate}}"
+        [(ngModel)]="commentText"></ion-textarea>
+      <div class="w2w-comment-send" (click)="addComment(tour)"></div>
+    </div>
+
+    <div class="w2w-comment" *ngFor="let comment of comments" on-hold="commentPopup(comment)">
+      <div class="w2w-comment-warn">
+        <a href="#" (click)="reportInadequate2(comment.id, 3)">
+          <ion-icon name="alert"></ion-icon>
+        </a>
+      </div>
+      <div class="w2w-comment-avatar" [ngStyle]="getCommentAvatar(comment)"></div>
+      <div class="w2w-comment-name">{{comment.name}}</div>
+      <div class="w2w-comment-date">{{ comment.date | date : "dd/MM/y" }}</div>
+      <div class="w2w-comment-text">{{comment.text}}</div>
+    </div>
+    <br />
+    <div *ngIf="moreComments" (click)="showMoreComments(tour)">
+      <b>{{'more_comments' | translate}}</b>
+    </div>
+  </div>
+
+</ion-content>

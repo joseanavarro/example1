@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'make_new_tour' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item text-wrap no-lines>
+    {{'take_pano_1' | translate}}
+  </ion-item>
+  <br />
+
+  <ion-item no-lines>
+    <ion-label>{{'tour_name' | translate}}: </ion-label>
+    <ion-label>
+      <b>{{tourTitle}}</b>
+    </ion-label>
+  </ion-item>
+  <br/>
+  <ion-item>
+    <ion-label stacked>{{'panorama_name' | translate}}</ion-label>
+    <ion-input type="text" [(ngModel)]="panoTitle"></ion-input>
+  </ion-item>
+  <br/>
+  <ion-item no-lines>
+    <ion-label>{{'improve_photo' | translate}}</ion-label>
+    <ion-select [(ngModel)]="hdr" (ionChange)="updateHDR($event)">
+      <ion-option value="off">NO</ion-option>
+      <ion-option value="hdr">HDR</ion-option>
+    </ion-select>
+  </ion-item>
+  <br/>
+
+  <button ion-button block class="button-dark" (click)="takePanorama()" *ngIf="!photoDone">{{'take_panorama' | translate}}</button>
+  <ion-card text-center *ngIf="photoDone">
+    <h2>
+      {{'photo_done' | translate}}
+    </h2>
+  </ion-card>
+
+
+  <button ion-button block class="button-dark" (click)="nextPanorama()" *ngIf="photoDone">{{'next_pano' | translate}}</button>
+  <button ion-button block class="button-dark" (click)="confirmEndTour()">{{'finish_tour' | translate}}</button>
+
+</ion-content>

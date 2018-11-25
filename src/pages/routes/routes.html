@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'routes' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="forceReload($event)">
+    <ion-refresher-content refreshingText="{{ 'reloading_data' | translate }}">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="w2w-tl-container">
+    <ion-card text-center *ngIf="notLoaded == 1">
+      <ion-spinner name="bubbles"></ion-spinner>
+    </ion-card>
+    <div class="w2w-tl-item" *ngFor="let route of routes">
+      <route-item [item]="route"></route-item>
+    </div>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())" *ngIf="page < totalPage">
+    <ion-infinite-scroll-content loadingSpinner="bubbles"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

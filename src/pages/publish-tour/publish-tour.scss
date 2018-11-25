@@ -1,0 +1,11 @@
+page-publish-tour {
+  .button-dark {
+    background-color: $dark;
+  }
+  img {
+    display: block;
+    width: 50vw;
+    height: 25vh;
+    object-fit: cover
+  }
+}

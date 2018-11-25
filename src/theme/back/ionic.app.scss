@@ -1,0 +1,240 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+*/
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+//$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// My custom color. I’ll override the default for $dark.
+// Note that it’s before we load the rest of Ionic.
+// This is important!
+
+// OTHER VARIABLES
+$content-bg: #199ACD;
+
+// Popup
+$popup-bg: #fcfcfc;
+
+// Welcome
+$auth-social-btn-icon-width: 30px;
+$auth-social-btn-color: #fff;
+$facebook-blue: #294886;
+$google-red: #dd4c39;
+$twitter-blue: #00a3dc;
+$welcome-color: #ffffff;
+
+// Auth
+$auth-color: #ffffff;
+$auth-btn-bg: #ff5a60;
+$auth-btn-color: #ffffff;
+$error-color: $auth-btn-bg;
+
+// Include all of Ionic
+@import "./ionic";
+
+// Importar todo lo de scss
+// @import "scss/mixins";
+// @import "scss/gemionic";
+// @import "scss/leaflet";
+// @import "scss/walkthrough";
+// @import "scss/w2w-tour-list";
+// @import "scss/w2w-tour-description";
+// @import "scss/w2w-profile";
+// @import "scss/w2w-comments";
+// @import "scss/w2w-publish";
+// @import "scss/slider";
+// @import "scss/register";
+// @import "scss/auth.styles";
+// @import "scss/welcome.styles";
+
+//---------------------------------
+// Estilos necesarios para leaflet
+//---------------------------------
+.scroll,
+.angular-leaflet-map {
+  height: 100%;
+}
+
+.leaflet-bottom {
+  bottom: 10px;
+}
+
+.item.item-body p {
+  margin-top: 0;
+}
+
+.tabs.border-top {
+  border-top: 2px solid #ddd !important;
+}
+
+.popup-body {
+  left: 0 !important;
+  right: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  margin: auto !important;
+}
+
+.popup-buttons .button {
+  background-color: $dark;
+  font-size: 15px;
+  border: 1px solid red;
+}
+
+.popup-buttons .button.activated {
+  background-color: #111111;
+}
+
+.slider-pager-page {
+  color: white !important;
+}
+
+.slider-pager-page.active {
+  color: $dark !important;
+}
+
+.slider-slide {
+  padding-top: 40px;
+  color: #000;
+  text-align: center;
+
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+    Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+}
+
+.listado-marco-eq {
+  overflow: hidden;
+  background: black;
+  color: white;
+  margin: auto;
+}
+
+.listado-marco-eq .listado-img-wrapper {
+  width: 100%;
+  padding-bottom: 20%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+.listado-marco-eq .listado-pie {
+  position: relative;
+  padding: 10px;
+}
+
+.listado-marco .listado-pie {
+  height: 125px;
+  position: relative;
+  padding: 10px;
+}
+
+.listado-avatar {
+  position: absolute;
+  top: -15px;
+  left: 10px;
+}
+.listado-avatar img {
+  max-width: 43px;
+  max-height: 43px;
+}
+.listado-autor {
+  min-height: 30px;
+  padding-left: 60px;
+  color: white;
+  text-overflow: ellipsis;
+  vertical-align: top;
+  white-space: nowrap;
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+}
+.listado-stats {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.listado-titulo {
+  display: inline-block;
+  width: 100%;
+  height: 20px;
+  overflow: hidden;
+  padding-left: 8px;
+  padding-right: 0;
+  text-overflow: ellipsis;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.add-pano-button {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  background-image: url(../img/add-pano.svg);
+  right: 15px;
+  bottom: 15px;
+  z-index: 10;
+  border-radius: 50%;
+  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.5);
+  background-color: #199ACD;
+}
+
+.menu-profile-container {
+  position: relative;
+  padding: 0px;
+  border: 1px white solid;
+  height: 60px;
+}
+
+.menu-profile-container a.item-content {
+  padding: 0px;
+  box-sizing: border-box;
+  border-bottom: 1px solid;
+  height: 56px;
+  border-top: 1px solid;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.menu-profile-avatar {
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.menu-profile-name {
+  position: absolute;
+  left: 70px;
+  top: 20px;
+  font-size: 20px;
+  width: 190px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+h4.gem-white {
+  font-size: 14px;
+}
+#krpano-embed {
+  z-index: 99999;
+}
+
+.xxicon {
+  font-size: 150px;
+  color: #199ACD;
+}

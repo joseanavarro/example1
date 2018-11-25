@@ -1,0 +1,52 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'publish_tour' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label stacked>{{'title' | translate}}</ion-label>
+    <ion-input type="text" [(ngModel)]="tourTitle">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>{{'desc' | translate}}</ion-label>
+    <ion-textarea type="text" [(ngModel)]="description">
+    </ion-textarea>
+  </ion-item>
+  <button ion-button block class="button-dark" (click)="editTour()">{{'edit_tour' | translate}}</button>
+  <ion-item no-lines>
+    <ion-label>{{'location' | translate}}: </ion-label>:
+  </ion-item>
+  <ion-item>
+    {{ location }}
+  </ion-item>
+  <button ion-button block class="button-dark" (click)="goMap()">{{'edit_location' | translate}}</button>
+
+  <ion-list>
+
+    <ion-list-header>
+      {{'tour_scenes' | translate}}
+    </ion-list-header>
+
+    <ion-item *ngFor="let item of tourPanos">
+      <ion-label (click)="goEditPano(item.tourid, item.panoid)">{{ item.name }}</ion-label>
+      <ion-thumbnail item-right>
+        <img [src]="item.thumb" (click)="goEditPano(item.tourid, item.panoid)">
+      </ion-thumbnail>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button block class="button-dark" (click)="publishTour()">{{'publish_tour' | translate}}</button>
+
+  <ion-item no-lines>
+    <ion-label>{{'publish_hidden_tour' | translate}}</ion-label>
+    <ion-checkbox [(ngModel)]="hideTour"></ion-checkbox>
+  </ion-item>
+
+</ion-content>

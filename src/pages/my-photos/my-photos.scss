@@ -1,0 +1,15 @@
+page-my-photos {
+  .button-dark {
+    background-color: $dark;
+  }
+  .xicon {
+    font-size: 30px;
+    color: color($colors, dark, base);
+  }
+  .even {
+    background: lightgray;
+  }
+  .odd {
+    background: white;
+  }
+}

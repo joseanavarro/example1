@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'user_profile' | translate }}</ion-title>
+  </ion-toolbar>
+  <user-header [active]="2"></user-header>
+</ion-header>
+
+<ion-content>
+  <profile-header [user]="userProfile"></profile-header>
+
+  <ion-refresher (ionRefresh)="forceReload($event)">
+    <ion-refresher-content refreshingText="{{ 'reloading_data' | translate }}">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="w2w-tl-container">
+    <ion-card text-center *ngIf="notLoaded == 1">
+      <ion-spinner name="bubbles"></ion-spinner>
+    </ion-card>
+    <div class="w2w-tl-item" *ngFor="let tour of tours">
+      <tour-item [item]="tour" [typeOfLink]=1></tour-item>
+    </div>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())" *ngIf="page < totalPage">
+    <ion-infinite-scroll-content loadingSpinner="bubbles"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

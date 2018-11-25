@@ -1,0 +1,11 @@
+# id_hotspot, id_pano, name, type, atv, ath, general_data, creation_date, modification_date
+'49652', '166756', 'Enlace manual1', '1', '0', '-73.47616387175393', 
+'{\"external\":true,\"next_pano\":167206,\"next_pano_atv\":0,\"next_pano_ath\":0,\"icon\":\"nav\"}', 
+'2018-07-16 13:11:15', '2018-07-16 13:11:15'
+
+
+
+{"external":true,"next_pano":167206,"next_pano_atv":0,"next_pano_ath":0,"icon":"nav"}
+
+
+

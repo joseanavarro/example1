@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'sel_photo' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <img src="{{image}}" style="max-width:100%;" />
+  <ion-item>
+    <ion-label stacked>{{'title' | translate}}</ion-label>
+    <ion-input type="text" [(ngModel)]="name">
+    </ion-input>
+  </ion-item>
+  <button ion-button block class="button-dark" (click)="publishPano()">{{'copy_to_publish' | translate}}</button>
+
+</ion-content>

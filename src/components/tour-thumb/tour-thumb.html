@@ -1,0 +1,8 @@
+<div class="w2w-tl-thumb" (click)="viewVisit(pano, tour, areaname)" [ngStyle]="getPanoImage(pano)">
+  <div class="w2w-pl-title">{{ pano.name }}</div>
+</div>
+
+<div class="w2w-tl-item-description" (click)="viewVisit(pano, tour, areaname)">
+  {{ pano.description | limitTo : 95 }}
+  <div class="w2w-tl-item-arrow"></div>
+</div>

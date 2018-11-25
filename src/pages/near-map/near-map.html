@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+  <near-header [active]="1" [title]="title"></near-header>
+</ion-header>
+
+
+<ion-content>
+  <map [lat]="latitude" [lon]="longitude" [zoom]="17" [force]="false"></map>
+</ion-content>

@@ -1,0 +1,59 @@
+<ion-header>
+
+  <ion-navbar *ngIf="!isRoot">
+    <ion-title>{{'edit_tour' | translate}}</ion-title>
+    <ion-buttons end>
+      <a (click)="goBack()">
+        <ion-icon name="close-circle" class="micon"></ion-icon>
+      </a>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar *ngIf="isRoot">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{'edit_tour' | translate}}</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content class="gem-ion-content single-post">
+
+  <img src="{{pano.thumbnail}}" style="max-width:100%;" />
+
+  <ion-item>
+    <ion-label stacked>
+      {{'panorama_title' | translate}}
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="pano.name">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>
+      {{'panorama_description' | translate}}
+    </ion-label>
+    <ion-textarea type="text" [(ngModel)]="pano.description">
+    </ion-textarea>
+  </ion-item>
+  <div padding>
+    <button ion-button block class="button-dark" (click)="editTexts()">{{'edit_texts' | translate}}</button>
+    <button ion-button block class="button-dark" (click)="changeCarpet()">{{txtShowHideCarpet}}</button>
+
+    <div>
+      <ion-item no-lines>
+        <ion-label>{{'area' | translate}}</ion-label>
+        <ion-select [(ngModel)]="selarea">
+          <ion-option *ngFor="let option of options" value="{{option.value}}" [selected]="option.selected">{{option.text}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+      <button ion-button block class="button-dark" (click)="changeArea(areaId)">{{'change_area' | translate}}</button>
+    </div>
+    <button ion-button block class="button-dark" (click)="editArrows()">{{'edit_arrows' | translate}}</button>
+    <button ion-button block class="button-dark" (click)="deletePano()">{{'delete_scene' | translate}}</button>
+  </div>
+
+</ion-content>

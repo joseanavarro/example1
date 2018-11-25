@@ -1,0 +1,9 @@
+SELECT p.apellidos, p.nombre, v.total_comentarios, v.visualizaciones, v.likes , v.propietario, e.Text50, 
+e.Text21, e.Text10, e.Text9, e.Text8, v.principal, e.Text5, e.Text6, vid.id_visita, vi.titulo, vi.contenido, 
+vid.titulo as default_titulo, vid.contenido  as default_contenido,e.fd_date FROM contenidos_viajesvirtuales_es.Elementos 
+e join contenidos_viajesvirtuales_es.visitas v on v.principal = e.codigo left join contenidos_viajesvirtuales_es.visitas_i18n vi 
+on vi.id_visita = v.id_visita and vi.locale = ?lng join contenidos_viajesvirtuales_es.visitas_i18n vid on vid.id_visita = v.id_visita 
+and vid.default_locale join my_aspnet_login.clictel_profile p on p.userid = v.propietario WHERE  v.propietario = ?userId AND 
+visita_procesada = 1 and visita_deleted = 0 and Num2 = 1 AND NUM1 = 14 AND Num4 = 1 AND Num5 <> 4 
+And((Codigo In(Select idItem From contenidos_viajesvirtuales_es.vis_item_portal where idPortal = 40)) 
+And(Num2 = 1 AND NOT deleted))  ORDER BY fd_date DESC LIMIT ?pagesize OFFSET 4

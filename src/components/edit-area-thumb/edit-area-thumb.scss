@@ -1,0 +1,75 @@
+edit-area-thumb {
+  .w2w-tl-item-options {
+    padding: 5px;
+    padding-top: 10px;
+    position: relative;
+    .w2w-tl-item-delete-icon {
+      width: 26px;
+      height: 23px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-size: 26px 23px;
+      background-image: url(../assets/imgs/delete.svg);
+      display: inline-block;
+    }
+    .w2w-tl-item-nodelete-icon {
+      width: 26px;
+      height: 23px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-size: 26px 23px;
+      display: inline-block;
+    }
+    .w2w-tl-item-check-icon {
+      width: 27px;
+      height: 27px;
+      position: absolute;
+      top: 8px;
+      left: 40px;
+      background-size: 27px 27px;
+      background-image: url(../assets/imgs/check.svg);
+      display: inline-block;
+    }
+    .w2w-tl-item-likes-icon-liked {
+      width: 26px;
+      height: 23px;
+      background-size: 26px 23px;
+      background-image: url(../assets/imgs/heart-full.svg);
+      display: inline-block;
+    }
+    .w2w-tl-item-comments-icon {
+      width: 26px;
+      height: 23px;
+      background-size: 26px 23px;
+      background-image: url(../assets/imgs/comment.svg);
+      display: inline-block;
+      margin-left: 5px;
+    }
+    .w2w-tl-item-views-icon {
+      width: 35px;
+      height: 23px;
+      background-size: 35px 23px;
+      background-image: url(../assets/imgs/views.svg);
+      display: inline-block;
+      margin-left: 5px;
+    }
+    .w2w-tl-item-edit-icon {
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-image: url(../assets/imgs/Edit_Icon.svg);
+      display: inline-block;
+      background-size: 25px 25px;
+    }
+    .w2w-tl-item-stat {
+      font-size: 20px;
+      line-height: 28px;
+      color: #44606e;
+      vertical-align: top;
+    }
+  }
+}

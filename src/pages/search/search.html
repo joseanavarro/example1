@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'search' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card text-center>
+    <ion-list radio-group [(ngModel)]="searchType">
+      <ion-item no-lines>
+        <ion-label>{{'search_by' | translate}}:</ion-label>
+      </ion-item>
+      <ion-item no-lines>
+        <input name="searchType" [(ngModel)]="searchType" type="radio" [value]="true" [checked]="searchType" /> {{'text' | translate}}
+      </ion-item>
+      <ion-item>
+        <input name="searchType" [(ngModel)]="searchType" type="radio" [value]="false" [checked]="!searchType" /> {{'address' | translate}}
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <form [formGroup]="search1Form" (submit)="search1()">
+
+    <ion-item>
+      <ion-label stacked>{{'search_term' | translate}}</ion-label>
+      <ion-input type="text" formControlName="searchInput">
+      </ion-input>
+    </ion-item>
+    <br/>
+    <button ion-button block class="button-dark" type="submit">{{'search' | translate}}</button>
+  </form>
+  <br/>
+
+  <div *ngIf="!searchType">
+    <ion-item text-wrap no-lines>
+      {{'address_desc' | translate}}
+    </ion-item>
+
+    <ion-card text-center>
+      <ion-item text-wrap no-lines>
+        {{'samples' | translate}}
+      </ion-item>
+      <ion-item text-wrap no-lines>
+        {{'address_sample1' | translate}}
+      </ion-item>
+      <ion-item text-wrap no-lines>
+        {{'address_sample2' | translate}}
+      </ion-item>
+    </ion-card>
+  </div>
+
+  <div *ngIf="searchType">
+    <ion-item text-wrap no-lines>
+      {{'address_desc_b' | translate}}
+    </ion-item>
+
+    <ion-card text-center>
+      <ion-item text-wrap no-lines>
+        {{'samples' | translate}}
+      </ion-item>
+      <ion-item text-wrap no-lines>
+        {{'address_sample1_b' | translate}}
+      </ion-item>
+      <ion-item text-wrap no-lines>
+        {{'address_sample2_b' | translate}}
+      </ion-item>
+    </ion-card>
+  </div>
+
+
+</ion-content>

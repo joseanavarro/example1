@@ -1,0 +1,65 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'about' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="about-content">
+  <div padding>
+    <p align="center">
+      <img src="assets/imgs/logo1.png" class="login-logo" width="45%">
+      <br />
+      <br />
+      <b class="gem-white">Panocasa Pro</b>
+      <br />
+      <br />
+      <b class="gem-white">v.{{appVersion}}</b>
+    </p>
+  </div>
+
+  <ion-row padding>
+    <ion-col no-padding width-50>
+      <ion-card (click)="openExtern('https://es.linkedin.com/in/janavgar')">
+        <ion-card-header>
+          {{"app_programming" | translate}}
+        </ion-card-header>
+        <ion-card-content>
+          <b>José A. Navarro</b>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col no-padding width-50>
+      <ion-card (click)="openExtern('https://es.linkedin.com/in/antoniodiazmarron')">
+        <ion-card-header>
+          {{"backend_programming" | translate}}
+        </ion-card-header>
+        <ion-card-content>
+          <b>Antonio Díaz</b>
+        </ion-card-content>
+      </ion-card>
+      <ion-card (click)="openExtern('https://es.linkedin.com/in/oscarlana')">
+        <ion-card-header>
+          {{"backend_programming" | translate}}
+        </ion-card-header>
+        <ion-card-content>
+          <b>Oscar Lana</b>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <div padding>
+    <p align="center">
+      <img src="assets/imgs/logo2.png" style="max-width:15%" border="0">
+      <br />
+      <b class="gem-white">Powered by VTEP360</b>
+    </p>
+    <br />
+    <button ion-button block class="button-dark" (click)="openExtern('http://www.panocasa.es/aviso-legal/')">{{'priv_agreement_2'
+      | translate}}</button>
+    <button ion-button block class="button-dark" (click)="openExtern('http://www.panocasa.es/politica-de-cookies/')">{{'priv_agreement_4'
+      | translate}}</button>
+  </div>
+</ion-content>

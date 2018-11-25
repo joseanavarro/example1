@@ -1,0 +1,64 @@
+page-new-tour {
+  .button-dark {
+    background-color: $dark;
+  }
+  .profile-info {
+    padding: 10px;
+    .profile-info-element {
+      min-height: 40px;
+      position: relative;
+      border-bottom: 1px solid rgba(100, 100, 100, 0.1);
+      color: #2b4047;
+      .profile-info-name {
+        padding: 10px;
+        text-transform: capitalize;
+        position: absolute;
+        left: 0;
+        top: 0;
+        text-align: left;
+        font-weight: bold;
+      }
+      .profile-info-value {
+        padding: 10px;
+        text-align: right;
+        padding-left: 100px;
+      }
+      .profile-info-value-full {
+        padding-top: 40px;
+      }
+      .clear {
+        clear: both;
+      }
+    }
+  }
+  .profile-tabs .tabs {
+    top: 150px !important;
+  }
+  .profile-tabs a {
+    color: #2b4047 !important;
+  }
+  .profile-tabs a.tab-item.active {
+    margin-top: -2px;
+    color: #2b4047 !important;
+    background-color: transparent;
+    border: 0 solid #2b4047;
+    border-top-width: 2px;
+    font-weight: bold;
+    border-color: #3a6658 !important;
+  }
+  .table-over-header {
+    border: 1px solid #e3f0f2 !important;
+    text-align: center;
+    font-size: 15px;
+  }
+  .table-header {
+    border-color: red;
+    font-size: 15px;
+  }
+  .table-row-odd {
+    background-color: #e1ebef;
+  }
+  .table-row-even {
+    background-color: #ffffff;
+  }
+}

@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{'edit_arrows' | translate}}</ion-title>
+    <ion-buttons end>
+      <a (click)="goBack()">
+        <ion-icon name="close-circle" class="micon"></ion-icon>
+      </a>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div padding *ngIf="command==2">
+    {{'arrow_to_edit' | translate}}:
+    <b>{{arrow.name}}</b>
+  </div>
+  <div padding *ngIf="command==3">
+    {{'arrow_to_delete' | translate}}:
+    <b>{{arrow.name}}</b>
+  </div>
+  <div padding *ngIf="second">
+    <ion-item>
+      <ion-label stacked>
+        {{'arrow_name' | translate}}
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="arrow.name">
+      </ion-input>
+    </ion-item>
+
+    <br/> {{'place_arrow' | translate}}
+  </div>
+  <div id="PanoWrapper" class="w2w-td-thumb editPano" [ngStyle]="getPanoImage(pano)">
+    <div id="pano1" style="height:100%;width:100%"></div>
+  </div>
+  <div *ngIf="second">
+    <div padding>
+      {{'select_entry_point' | translate}}
+    </div>
+    <div id="PanoWrapper" class="w2w-td-thumb editPano" [ngStyle]="getPanoImage(pano)">
+      <div id="pano2" style="height:100%;width:100%"></div>
+    </div>
+    <div padding>
+      <ion-item no-lines *ngIf="command==1">
+        <ion-label>{{'include_return_arrow' | translate}}</ion-label>
+        <ion-checkbox [(ngModel)]="reverseArrow"></ion-checkbox>
+      </ion-item>
+      <ion-item *ngIf="reverseArrow">
+        <ion-label stacked>
+          {{'reverse_arrow_name' | translate}}
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="arrow2.name">
+        </ion-input>
+      </ion-item>
+
+      <button ion-button block class="button-dark" (click)="addArrow(arrow)" *ngIf="command==1">{{'add_arrow' | translate}}</button>
+      <button ion-button block class="button-dark" (click)="editArrow(arrow)" *ngIf="command==2">{{'edit_arrow' | translate}}</button>
+    </div>
+  </div>
+  <div *ngIf="!second">
+    <br/>
+    <br/>
+    <div padding>
+      <button ion-button block class="button-dark" (click)="deleteArrow(arrow)" *ngIf="command==3">{{'delete_arrow' | translate}}</button>
+    </div>
+  </div>
+</ion-content>

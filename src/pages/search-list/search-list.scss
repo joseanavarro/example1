@@ -1,0 +1,11 @@
+page-search-list {
+  .w2w-tl-container {}
+  .w2w-tl-item {
+    @media screen and (min-width: 630px) {
+      width: 48%;
+      margin: 1%;
+      background-color: #f9f9f9;
+      float: left;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+<div class="w2w-tl-thumb" (click)="viewArea(area.id_area, tour, area.name)" [ngStyle]="getAreaImage(area)">
+  <div class="w2w-pl-title">{{ area.name }}</div>
+</div>
+
+<div class="w2w-tl-item-description" (click)="viewArea(area.id_area, tour, area.name)">
+  {{ area.description | limitTo : 95 }}
+  <div class="w2w-tl-item-arrow"></div>
+</div>

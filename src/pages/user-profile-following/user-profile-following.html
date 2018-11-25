@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'user_profile' | translate }}</ion-title>
+  </ion-toolbar>
+  <user-header [active]="4"></user-header>
+</ion-header>
+
+<ion-content>
+  <profile-header [user]="userProfile"></profile-header>
+
+  <div class="w2w-tl-container">
+    <ion-card text-center *ngIf="notLoaded == 1">
+      <ion-spinner name="bubbles"></ion-spinner>
+    </ion-card>
+    <div class="w2w-tl-item" *ngFor="let follow of following">
+      <flw-item [item]="follow"></flw-item>
+    </div>
+  </div>
+
+</ion-content>

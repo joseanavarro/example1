@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'connect_360_camera' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div style="text-align:center;" *ngIf="!cameraConnected">
+    <img src="assets/imgs/camara1.png" style="max-width:50%;max-height:30vh;" />
+  </div>
+  <div style="text-align:center;" *ngIf="cameraConnected">
+    <img src="assets/imgs/camara1.png" style="max-width:20%;max-height:15vh;" />
+  </div>
+  <div *ngIf="cameraConnected">
+
+    <ion-card text-center>
+
+      <div class="row" class="table-over-header">
+        <div class="col">
+          <b>{{'camera' | translate}}</b>
+        </div>
+      </div>
+      <ion-row>
+        <ion-col>
+          <b>{{'status' | translate}} </b>
+        </ion-col>
+        <ion-col>{{'camera_connected' | translate}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <b>{{'battery_level' | translate}} </b>
+        </ion-col>
+        <ion-col>{{percentBatteryLevel}} %</ion-col>
+      </ion-row>
+    </ion-card>
+
+  </div>
+  <br />
+  <div *ngIf="!cameraConnected">
+
+    <ion-card text-center>
+
+      <div class="row" class="table-over-header">
+        <div class="col">
+          <b>{{'camera_not_connected' | translate}}</b>
+        </div>
+      </div>
+      <div class="row" class="table-over-header">
+        <div *ngIf="!wifiCon" class="col">{{'camera_not_connected_ios' | translate}}</div>
+        <div *ngIf="wifiCon" class="col">{{'camera_not_connected_and' | translate}}</div>
+      </div>
+    </ion-card>
+
+    <div *ngIf="cameraTryConnect>0">
+
+      <div class="profile-info">
+        <div class="row" class="table-over-header">
+          <div class="col">
+            <ion-spinner icon="ios"></ion-spinner> {{'connection_attempt' | translate}} {{cameraTryConnect}}
+
+          </div>
+        </div>
+        <div class="row" class="table-over-header">
+          <div class="col"><b>{{'err_camera_not_ok' | translate}}</b></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div *ngIf="!cameraConnected">
+    <div *ngIf="!wifiCon">
+      <button ion-button block class="button-dark" type="submit" (click)="openWifi()">{{'open_wifi_settings' |
+        translate}}</button>
+    </div>
+    <button ion-button block class="button-dark" type="submit" (click)="startConnection()">{{'connect_camera' |
+      translate}}</button>
+    <div class="col" *ngIf="cameraError">{{'err_camera_not_ok' | translate}}</div>
+  </div>
+  <div *ngIf="cameraConnected">
+    <div>
+      <button ion-button block class="button-dark" type="submit" (click)="startNewTour()">{{'make_new_tour' |
+        translate}}</button>
+      <button ion-button block class="button-dark" type="submit" (click)="continueTour()">{{'add_to_tour' | translate}}</button>
+    </div>
+
+  </div>
+
+</ion-content>

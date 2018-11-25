@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'my_photos' | translate }}</ion-title>
+  </ion-toolbar>
+  <myphotos-header [active]="1"></myphotos-header>
+</ion-header>
+
+
+<ion-content>
+
+  <div *ngIf="viewList">
+    <ion-card padding>
+      {{'pending_tours_desc' | translate}}
+    </ion-card>
+    <ion-grid>
+      <ion-row *ngFor="let item of unpubTours; let odd=odd; let even=even " [ngClass]="{ odd: odd, even:even}">
+        <ion-col col-7 align-self-start>
+          {{item.name}}
+        </ion-col>
+        <ion-col align-self-end>
+          <ion-icon name="star" class="xicon" *ngIf="item.status==4"></ion-icon>
+        </ion-col>
+        <ion-col align-self-end>
+          <ion-icon name="arrow-up" class="xicon" (click)="publishTour(item.tourid)"></ion-icon>
+        </ion-col>
+        <ion-col align-self-end>
+          <ion-icon name="add-circle" class="xicon" (click)="joinTours(item.tourid)"></ion-icon>
+        </ion-col>
+        <ion-col align-self-end>
+          <ion-icon name="trash" class="xicon" (click)="deleteTour(item.tourid, item.name)"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ion-card *ngIf="!viewList2" padding>
+    {{'no_pending_tours' | translate}}
+  </ion-card>
+</ion-content>

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Position</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="toggleLang()">EN</button>
+      <button ion-button (click)="toggleLang()">ES</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p>
+    <button ion-button color="dark" (click)='btnGetLocation()'>{{ 'txt_get_location' | translate }}</button>
+  </p>
+
+  <ion-refresher (ionRefresh)="forceReload($event)">
+    <ion-refresher-content refreshingText="Reload from API...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <button ion-button full (click)="loadFilms()">Load Films</button>
+  <button ion-button full color="danger" (click)="invalidateCache()">Invalidate Cache</button>
+
+  <ion-list>
+    <ion-item *ngFor="let film of films | async">
+      {{ film.title }}
+    </ion-item>
+  </ion-list>
+</ion-content>

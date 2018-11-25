@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ tour.title }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div class="w2w-comments">
+    <div class="w2w-comments-title">{{'comments' | translate}}</div>
+
+    <div class="w2w-comment" *ngIf="isLogged">
+      <div class="w2w-comment-warn">
+        <a href="#" (click)="reportInadequate2(comment.id, 3)">
+          <i class="icon ion-alert"></i>
+        </a>
+      </div>
+      <div class="w2w-comment-avatar" [ngStyle]="getUserAvatar()"></div>
+      <textarea id="vistComment" msd-elastic placeholder="{{'write_comment' | translate}}" [(ngModel)]="commentText"></textarea>
+      <div class="w2w-comment-send" (click)="addComment(tour)"></div>
+    </div>
+
+    <div class="w2w-comment" *ngFor="let comment of comments" on-hold="commentPopup(comment)">
+      <div class="w2w-comment-warn">
+        <a href="#" (click)="reportInadequate2(comment.id, 3)">
+          <ion-icon name="alert"></ion-icon>
+        </a>
+      </div>
+      <div class="w2w-comment-avatar" [ngStyle]="getCommentAvatar(comment)"></div>
+      <div class="w2w-comment-name">{{comment.name}}</div>
+      <div class="w2w-comment-date">{{ comment.date | date : "dd/MM/y" }}</div>
+      <div class="w2w-comment-text">{{comment.text}}</div>
+    </div>
+    <br />
+    <div *ngIf="moreComments" (click)="showMoreComments(tour)">
+      <b>{{'more_comments' | translate}}</b>
+    </div>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

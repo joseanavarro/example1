@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'route' | translate }}</ion-title>
+  </ion-toolbar>
+  <route-header [active]="3" [route]="route"></route-header>
+
+</ion-header>
+
+<ion-content>
+
+  <div class="w2w-tl-container">
+    <ion-card text-center *ngIf="notLoaded == 1">
+      <ion-spinner name="bubbles"></ion-spinner>
+    </ion-card>
+    <div class="w2w-tl-item" *ngFor="let tour of tours">
+      <tour-item [item]="tour" [typeOfLink]=1></tour-item>
+    </div>
+  </div>
+
+</ion-content>

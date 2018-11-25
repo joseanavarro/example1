@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'edit_location' | translate }}</ion-title>
+  </ion-navbar>
+
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="searchTerm" placeholder="{{'search_address_desc' | translate}}">
+    </ion-input>
+  </ion-item>
+  <button ion-button block class="button-dark" (click)="searchAddress()">{{'search_address' | translate}}</button>
+
+</ion-header>
+
+<ion-content>
+  <!-- (newLocation) es el evento que se dispara cuando se cambia el centro del mapa -->
+  <map [lat]="latitude" [lon]="longitude" [zoom]="17" [force]="true" [edit]="true" (newLocation)="getNewLocation($event)"></map>
+</ion-content>
+
+<ion-footer>
+  <button ion-button block class="button-dark" (click)="setLocation()">{{'set_address' | translate}}</button>
+</ion-footer>

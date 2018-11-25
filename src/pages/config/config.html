@@ -1,0 +1,52 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'config' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+</ion-content>
+
+<ion-content class="padding">
+  <br />
+  <ion-list>
+
+    <ion-item text-wrap *ngIf="wifiCon">
+      <ion-label>{{'control_wifi_conn' | translate}}</ion-label>
+      <ion-toggle [(ngModel)]="wifiCon" color="dark"></ion-toggle>
+    </ion-item>
+
+    <ion-item text-wrap *ngIf="wifiCon">
+      <ion-label>{{'associated_camera' | translate}}: {{cameraWifi}}</ion-label>
+      <ion-toggle [(ngModel)]="hasCameraWifi" color="dark"></ion-toggle>
+    </ion-item>
+
+    <ion-item text-wrap>
+      <ion-label>{{'remove_tour_after' | translate}}</ion-label>
+      <ion-toggle [(ngModel)]="delTourAfterPub" color="dark"></ion-toggle>
+    </ion-item>
+
+    <ion-item text-wrap>
+      <ion-label>{{'remove_photo_after' | translate}}</ion-label>
+      <ion-toggle [(ngModel)]="remPhotoAfter" color="dark"></ion-toggle>
+    </ion-item>
+
+    <ion-item text-wrap>
+      <ion-label>{{'save_location' | translate}}</ion-label>
+      <ion-toggle [(ngModel)]="getLocation" color="dark"></ion-toggle>
+    </ion-item>
+
+    <ion-item text-wrap>
+      <ion-label>{{'save_to_external' | translate}}</ion-label>
+      <ion-toggle [(ngModel)]="saveToExternal" color="dark"></ion-toggle>
+    </ion-item>
+
+  </ion-list>
+  <div padding>
+    <button ion-button block class="button-dark" (click)="saveConfig()">{{'save_configuration' | translate}}</button>
+  </div>
+</ion-content>

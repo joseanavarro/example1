@@ -1,0 +1,52 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'report_content' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <p>{{'report_inadequate' | translate}}</p>
+
+  <form [formGroup]="sendReportForm" (submit)="sendReport()">
+
+    <div class="padding">
+      <button ion-button block class="button-dark" type="submit">{{'send' | translate}}</button>
+    </div>
+
+    <div class="list">
+      <ion-list radio-group formControlName="choiceInput">
+        <ion-item>
+          <ion-label>{{'sexual_content' | translate}}</ion-label>
+          <ion-radio value="1"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{'violent_context' | translate}}</ion-label>
+          <ion-radio value="2"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{'hate_content' | translate}}</ion-label>
+          <ion-radio value="3"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{'dangerous_content' | translate}}</ion-label>
+          <ion-radio value="4"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{'child_abuse' | translate}}</ion-label>
+          <ion-radio value="5"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{'rights_abuse' | translate}}</ion-label>
+          <ion-radio value="6"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{'spam' | translate}}</ion-label>
+          <ion-radio value="7"></ion-radio>
+        </ion-item>
+      </ion-list>
+      <ion-textarea placeholder="{{'write_description' | translate}}" formControlName="descInput"></ion-textarea>
+    </div>
+  </form>
+</ion-content>

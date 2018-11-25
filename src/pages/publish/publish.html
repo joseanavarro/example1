@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'sel_photo' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card text-center *ngIf="!showPicture">
+    <ion-item text-wrap no-lines>
+      {{'publish_camera' | translate}}
+    </ion-item>
+    <ion-item text-wrap no-lines>
+      {{'publish_phone' | translate}}
+    </ion-item>
+  </ion-card>
+
+  <div style="text-align: center" *ngIf="!showPicture">
+    <img src="assets/imgs/publish-1.png" style="max-width:65%;max-height:70vh;" />
+  </div>
+
+  <div style="text-align: center" *ngIf="showPicture">
+    <img [src]="picture" style="max-width:99%;" id="img1">
+  </div>
+
+  <div padding *ngIf="!showPicture">
+    <button ion-button block class="button-dark" type="submit" (click)="selectPanorama()">{{'select_panorama' | translate}}</button>
+  </div>
+
+</ion-content>

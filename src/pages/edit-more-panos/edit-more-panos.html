@@ -1,0 +1,52 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'edit_tour' | translate}}</ion-title>
+    <ion-buttons end>
+      <a (click)="goBack()">
+        <ion-icon name="close-circle" class="micon"></ion-icon>
+      </a>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="w2w-tl-location">
+    <div class="w2w-tl-item-icon-location"></div>
+    <br/> &nbsp;&nbsp;
+    <div class="w2w-item-title">{{ tour.title }}</div>
+  </div>
+  <div class="w2w-item-title" *ngIf="area === '-1'">&nbsp;&nbsp;{{ areaname }}</div>
+
+  <div class="w2w-tl-container">
+    <ion-card text-center *ngIf="notLoaded">
+      <ion-spinner name="bubbles"></ion-spinner>
+    </ion-card>
+
+    <div padding *ngIf="area !== '-1'">
+      <ion-item>
+        <ion-label stacked>
+          {{'area_name' | translate}}
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="areaname">
+        </ion-input>
+      </ion-item>
+      <button ion-button block class="button-dark" (click)="editArea(area)">{{'edit_area_name' | translate}}</button>
+      <button ion-button block class="button-dark" (click)="deleteArea(area)" *ngIf="area !== '0'">{{'delete_area' | translate}}</button>
+    </div>
+
+    <div class="w2w-item-note" padding>
+      &nbsp;
+      <ion-icon name="arrow-dropright" item-left>&nbsp;{{'touch_to_edit_panos' | translate}}</ion-icon>
+    </div>
+    <br/>
+    <br/>
+
+    <div class="w2w-tl-item" *ngFor="let pano of panos">
+      <edit-tour-thumb [pano]="pano" [tour]="tour" [areaname]="areaname"></edit-tour-thumb>
+    </div>
+  </div>
+
+</ion-content>

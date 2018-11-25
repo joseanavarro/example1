@@ -1,0 +1,20 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'edit_scene' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <img src="{{pano.thumbnail}}" style="max-width:100%;" />
+  <ion-item>
+    <ion-label stacked>{{'title' | translate}}</ion-label>
+    <ion-input type="text" [(ngModel)]="pano.name">
+    </ion-input>
+  </ion-item>
+  <button ion-button block class="button-dark" (click)="editPano()">{{'edit_scene' | translate}}</button>
+  <button ion-button block class="button-dark" (click)="deletePano()">{{'delete_scene' | translate}}</button>
+
+</ion-content>

@@ -1,0 +1,12 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'map' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <map [lat]="tour.lat" [lon]="tour.lon" [zoom]="17" [force]="true"></map>
+</ion-content>

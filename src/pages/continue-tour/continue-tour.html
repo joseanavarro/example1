@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{'add_to_tour' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card padding>
+    {{'sel_tour_to_resume' | translate}}
+  </ion-card>
+
+  <ion-card padding *ngIf="viewList">
+    <form [formGroup]="continueTourForm" (submit)="continueTour()">
+
+      <ion-list radio-group formControlName="tourid">
+
+        <ion-item *ngFor="let item of tourList">
+          <ion-label>{{ item.title }}</ion-label>
+          <ion-radio [value]="item.tourid"></ion-radio>
+        </ion-item>
+
+      </ion-list>
+      <button ion-button block class="button-dark" type="submit">{{'add_to_tour' | translate}}</button>
+    </form>
+  </ion-card>
+
+  <ion-card padding *ngIf="!viewList">
+    {{'no_tours_to_resume' | translate}}
+  </ion-card>
+
+</ion-content>

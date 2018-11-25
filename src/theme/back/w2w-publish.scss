@@ -1,0 +1,83 @@
+.publish-pano{
+		.compass-container{
+			text-align:center;
+			padding:20px;
+		}
+		.compass-arrow{
+			width: 50px;
+			height: 50px;
+			background-size: 50px 50px;
+			background-position: center;
+			margin:auto;
+			background-image:url(../img/compass.svg);
+		}
+		
+		.compass-arrow.ok{
+		 	background-image:url(../img/compass-ok.svg);
+		}
+		.compass-desc{
+			padding-left:10px;
+			padding-right:10px;
+			height:60px;
+			border-bottom: 1px solid rgba(100,100,100,0.1);
+		}
+		.publish_instructions{
+		padding-top: 15px;
+			padding-left:10px;
+			padding-right:10px;
+			height:40px;
+		}
+	.slider-container
+	{
+	top:200px;
+	}
+	i.icon.ion-record {
+    color: #A92219;
+}
+ion-slide img {
+max-width: 100%;
+max-height: 40vh;
+}
+	.slider-pager{top:0px;}
+	
+		.publish-map{
+			position:absolute;
+			top:63px;
+			bottom:44px;
+			width:100%;
+			.publish-map-marker{
+				background-image: url(../img/location.svg);
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    margin-top: -40px;
+    margin-left: -20px;
+    background-size: cover;
+		  }
+		}
+		
+		#publishPanoPreview {
+		        height: 30vh;
+		}
+		.item-input{
+			padding: 6px 16px 5px 16px;
+		}
+		.location-button{
+		white-space: normal;
+		}
+
+		.bar-subfooter{
+			background-image:linear-gradient(0deg, #ddd, #ddd 50%, transparent 50%);
+		}
+		.bar.bar-dark.bar-footer{
+			background-image:linear-gradient(0deg, #199ACD, #199ACD 50%, transparent 50%);
+		}
+}
+input,textarea{
+		@include placeholder {
+	   color:#B3B3B3;
+	}
+}

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'near' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content style="text-align: center" padding>
+  <div *ngIf="looking">
+    <br />
+    <br />
+    <img src="assets/imgs/loading_spinner.gif" alt="" width="65%">
+    <br />
+    <h3>{{ 'looking_location' | translate }}</h3>
+  </div>
+  <div *ngIf="showError">
+    <br />
+    <br />
+    <h3>{{ 'location_error' | translate }}</h3>
+  </div>
+</ion-content>

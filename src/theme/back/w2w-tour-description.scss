@@ -1,0 +1,60 @@
+.w2w-td-thumb{
+		background-size:cover;
+		background-position:center;
+		background-repeat:no-repeat;
+		
+
+}
+
+.show-more
+{	
+	position:relative;
+	padding:5px;
+	overflow:hidden;
+	.show-more-content
+	{
+		line-height:20px;
+		max-height:80px;
+		overflow:hidden;
+	}
+	
+	.show-more-text{
+		position:absolute;
+		top:65px;
+		left:5px;
+		right:5px;
+		font-style: italic;
+    color: #a5a6a9;
+    background-color:#fff;
+    z-index: 1;
+	}
+	
+	
+	
+}
+
+.show-more.show-more-active{
+		.show-more-content{
+			max-height:none;
+		}
+		
+		.show-more-text{
+			display:none;
+		}
+	}
+#PanoWrapper{
+	z-index:9999;
+}
+
+#PanoWrapper.normalPano{
+	height: 60vh;
+	position:relative;
+}
+
+#PanoWrapper.fullscreenPano{
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+}

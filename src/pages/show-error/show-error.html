@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'found_error' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="text-align: center" padding>
+  <br />
+  <br />
+  <h3>{{ errorMsg }}</h3>
+  <br />
+  <br /> {{ errorMsg2 }}
+  <br />
+  <br />
+  <br />
+  <button ion-button block class="button-dark" type="submit" (click)="goHome()">{{'go_back_home' | translate}}</button>
+
+</ion-content>

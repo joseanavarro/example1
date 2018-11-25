@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'make_new_tour' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item text-wrap no-lines>
+    {{'start_tour_1' | translate}}
+  </ion-item>
+  <br />
+
+  <form [formGroup]="startTourForm" (submit)="startNewTour()">
+
+    <ion-item>
+      <ion-label stacked>{{'title' | translate}}</ion-label>
+      <ion-input type="text" formControlName="tourTitle">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>{{'desc' | translate}}</ion-label>
+      <ion-textarea type="text" formControlName="description">
+      </ion-textarea>
+    </ion-item>
+    <br />
+    <button ion-button block class="button-dark" type="submit">{{'start_tour' | translate}}</button>
+  </form>
+
+</ion-content>

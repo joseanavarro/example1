@@ -1,0 +1,55 @@
+<ion-menu [content]="content">
+  <ion-header>
+  </ion-header>
+
+  <ion-content class="gem-sidebar dark">
+    <ion-list>
+      <ion-item no-lines *ngIf="isIOS">
+        <div class="row">
+          <div>
+          </div>
+        </div>
+      </ion-item>
+
+      <ion-item no-lines>
+        <div class="row">
+          <div>
+            <img src="assets/imgs/logo1.png" alt="" width="45%" align="left">
+          </div>
+        </div>
+      </ion-item>
+      <ion-item no-lines class="menu-profile-container" menu-toggle="" *ngIf="hasImage()">
+        <ion-avatar (click)="openProfile()">
+          <img class="menu-profile-avatar" src="{{photo}}" height="40px">
+        </ion-avatar>
+        <br />
+        <span class="menu-profile-name">{{name}}</span>
+      </ion-item>
+      <hr />
+      <span *ngFor="let p of pages">
+        <ion-item no-lines menuClose (click)="openPage(p)">
+          <ion-icon small [name]="p.icon"> </ion-icon>
+          &nbsp;&nbsp;{{p.title}}
+        </ion-item>
+      </span>
+    </ion-list>
+
+  </ion-content>
+
+</ion-menu>
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+<ion-fab right bottom *ngIf="viewCameraConnectedButton" #fab>
+  <button ion-fab color="dark">
+    <ion-icon name="camera"></ion-icon>
+  </button>
+  <ion-fab-list side="left">
+    <button ion-fab color="dark" (click)="openCamera(fab)">
+      <ion-icon name="camera"></ion-icon>
+    </button>
+    <button ion-fab color="dark" (click)="closeCamera(fab)">
+      <ion-icon name="power"></ion-icon>
+    </button>
+  </ion-fab-list>
+</ion-fab>

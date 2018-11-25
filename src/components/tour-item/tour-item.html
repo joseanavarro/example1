@@ -1,0 +1,39 @@
+<div class="w2w-tl-item-header">
+
+  <a (click)="photographerProfile(item.userId)">
+    <ion-item no-lines>
+      <ion-avatar item-left>
+        <img [src]="getProfilePic(item)">
+      </ion-avatar>
+      <h2>{{ item.nombre }}&nbsp;{{ item.apellidos }}</h2>
+    </ion-item>
+  </a>
+  <div class="w2w-tl-time">{{ item.creation | date : "dd/MM/y" }} </div>
+</div>
+
+<div class="w2w-tl-thumb" (click)="viewVisit(item, typeOfLink)" [ngStyle]="getPanoImage(item)">
+  <div class="w2w-pl-title">{{ item.title }}</div>
+</div>
+<div class="w2w-tl-location">
+  <div class="w2w-tl-item-icon-location"></div>
+  <br/> &nbsp;
+  <ion-icon name="pin" item-left>&nbsp;{{getLocationName(item)}} </ion-icon>
+</div>
+
+<div class="w2w-tl-item-options">
+  <i class="w2w-tl-item-likes-icon-liked" *ngIf="item.liked" (click)="like(item,false)"></i>
+  <i class="w2w-tl-item-likes-icon" *ngIf="!item.liked" (click)="like(item,true)"></i>
+  <span class="w2w-tl-item-stat">{{ item.likes }}</span>
+  <i class="w2w-tl-item-comments-icon" (click)="item.comment()"></i>
+  <span class="w2w-tl-item-stat">{{ item.total_comentarios }}</span>
+  <i class="w2w-tl-item-views-icon" (click)="viewVisit(item, typeOfLink)"></i>
+  <span class="w2w-tl-item-stat">{{ item.visualizaciones }}</span>
+  <ion-col align-self-end *ngIf="item.can_edit">
+    &nbsp;&nbsp;&nbsp;
+    <ion-icon name="settings" class="xicon" (click)="edit(item, typeOfLink)"></ion-icon>
+  </ion-col>
+</div>
+<div class="w2w-tl-item-description" (click)="viewVisit(item, typeOfLink)">
+  {{ item.description | limitTo : 95 }}
+  <div class="w2w-tl-item-arrow"></div>
+</div>

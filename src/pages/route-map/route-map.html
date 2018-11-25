@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'route' | translate }}</ion-title>
+  </ion-toolbar>
+  <route-header [active]="2" [route]="route"></route-header>
+</ion-header>
+
+
+<ion-content>
+  <map [lat]="route.lat" [lon]="route.lon" [zoom]="route.zoom" [force]="true"></map>
+</ion-content>

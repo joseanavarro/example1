@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'add_tours' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="padding">
+
+  <ion-card padding>
+    {{'join_tours_desc' | translate}}
+  </ion-card>
+
+  <ion-card padding>
+    {{'tour_1' | translate}}:
+    <input type="text" [(ngModel)]="tourData.title">
+  </ion-card>
+
+  <ion-card padding>
+    <form [formGroup]="joinToursForm" (submit)="joinTours()">
+
+      <ion-list radio-group formControlName="tourid">
+
+        <ion-list-header>
+          {{'tour_2' | translate}}
+        </ion-list-header>
+
+        <ion-item *ngFor="let item of tourList">
+          <ion-label>{{ item.title }}</ion-label>
+          <ion-radio [value]="item.tourid"></ion-radio>
+        </ion-item>
+
+      </ion-list>
+      <button ion-button block class="button-dark" type="submit">{{'join_tours' | translate}}</button>
+    </form>
+  </ion-card>
+
+  <div>
+  </div>
+
+</ion-content>

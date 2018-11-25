@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'route' | translate }}</ion-title>
+  </ion-toolbar>
+  <route-header [active]="1" [route]="route"></route-header>
+
+</ion-header>
+
+<ion-content>
+  <div class="gem-post-media">
+
+    <!-- post image -->
+    <div class="w2w-tl-thumb" [ngStyle]="getStyle(route)">
+    </div>
+
+    <!-- Post title -->
+    <h3 class="post-title">{{route.title}}</h3>
+
+    <!-- bottom shadow -->
+    <div class="bottombar-and-shadow"></div>
+
+  </div>
+
+  <!-- Post Content -->
+  <div class="gem-post-content">
+    <p>{{route.description}}</p>
+
+    <!-- Quote Style -->
+    <div class="gem-quote">
+      {{route.province}}
+      <span class="author">{{route.country}}</span>
+    </div>
+    <!-- End Quote -->
+
+  </div>
+</ion-content>

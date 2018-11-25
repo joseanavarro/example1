@@ -1,0 +1,65 @@
+.darkxx {
+  background-color: color($colors, dark, base);
+}
+
+// Iconos grandes para la página Home
+.xxicon {
+  font-size: 60px;
+  color: color($colors, dark, base);
+}
+
+//-------------------
+// Tabla responsiva
+//-------------------
+.square_sq {
+  float: left;
+  position: relative;
+  width: 30%;
+  padding-bottom: 30%; /* = width for a 1:1 aspect ratio */
+  margin: 1.66%;
+  overflow: hidden;
+}
+
+.content_sq {
+  position: absolute;
+  height: 90%; /* = 100% - 2*5% padding */
+  width: 90%; /* = 100% - 2*5% padding */
+  padding: 5%;
+  text-align: center;
+}
+
+/*Sidebar*/
+.gem-sidebar.dark {
+  background: color($colors, dark, base);
+}
+.gem-sidebar.dark,
+.gem-sidebar.dark .gem-sidebar-profile-box * {
+  color: #fff;
+}
+.gem-sidebar.dark .gem-sidebar-profile-box {
+  padding: 15px 10px;
+}
+.gem-sidebar.dark .gem-sidebar-profile-box .title,
+.gem-sidebar.dark .gem-sidebar-profile-box .action-links {
+  margin: 4px 0;
+}
+.gem-sidebar.dark .item-complex .item-content,
+.gem-sidebar.dark .item {
+  background-color: color($colors, dark, base);
+  border-color: color($colors, dark, base);
+  color: #fff;
+  font-size: 15px;
+}
+.gem-sidebar.dark .item-ng-click,
+.item-complex .item-content,
+.item-radio .item-content {
+  padding-left: 20px;
+}
+
+.alertDanger{
+  background-color: white;
+  color: red;
+  button{
+      color: red;
+  }
+}

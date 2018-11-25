@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'user_profile' | translate }}</ion-title>
+  </ion-toolbar>
+  <user-header [active]="1"></user-header>
+</ion-header>
+
+<ion-content>
+  <profile-header [user]="userProfile"></profile-header>
+
+  <div class="profile-info">
+    <div class="profile-info-element">
+      <div class="profile-info-name">{{'name' |translate}}</div>
+      <div class="profile-info-value">{{userProfile.name}}</div>
+    </div>
+    <div class="profile-info-element" *ngIf="userProfile.city">
+      <div class="profile-info-name">{{'city' |translate}}</div>
+      <div class="profile-info-value">{{userProfile.city}}</div>
+    </div>
+    <div class="profile-info-element" *ngIf="userProfile.country">
+      <div class="profile-info-name">{{'country' |translate}}</div>
+      <div class="profile-info-value">{{userProfile.country}}</div>
+    </div>
+    <div class="profile-info-element" *ngIf="userProfile.ocupation">
+      <div class="profile-info-name">{{'ocupation' |translate}}</div>
+      <div class="profile-info-value">{{userProfile.ocupation}}</div>
+    </div>
+    <div class="profile-info-element" *ngIf="userProfile.web">
+      <div class="profile-info-name">{{'web' |translate}}</div>
+      <div class="profile-info-value">
+        <a href="{{userProfile.web}}" onclick="window.open(this.href, '_system');return false;">{{userProfile.web_name? userProfile.web_name : userProfile.web}}</a>
+      </div>
+    </div>
+    <div class="profile-info-element" *ngIf="userProfile.description">
+
+      <span class="profile-info-value-full" [innerHTML]="userProfile.description"></span>
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button ion-button (click)="goBack()">
+        <ion-icon class="customIcon" name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{'login' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="login-content auth-content">
+  <div padding>
+    <p align="center">
+      <img src="assets/imgs/logo1.png" class="login-logo" width="55%">
+    </p>
+  </div>
+  <form class="login-form auth-form" [formGroup]="loginForm" (submit)="doLogin()">
+    <ion-item>
+      <ion-input type="email" placeholder="Email" formControlName="emailInput">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="password" placeholder="Password" formControlName="passwordInput"></ion-input>
+    </ion-item>
+    <button ion-button block class="button-dark" type="submit">{{'login' | translate}}</button>
+  </form>
+  <ion-row class="alt-options">
+    <ion-col no-padding width-50>
+      <button ion-button block clear class="forgot-button" text-capitalize (click)="goToForgotPassword()">{{'remember_password'
+        | translate}}</button>
+    </ion-col>
+    <ion-col no-padding width-50>
+      <button ion-button block clear class="signup-button" text-capitalize (click)="goToSignup()">{{'register' |
+        translate}}</button>
+    </ion-col>
+  </ion-row>
+  <p class="auth-divider">
+    {{'or' | translate}}
+  </p>
+  <button ion-button icon-start block class="facebook-auth-button" text-capitalize color="facebook" (click)="doFacebookLogin()">
+    <ion-icon name="logo-facebook"></ion-icon>
+    &nbsp;&nbsp;{{'facebook_login' | translate}}
+  </button>
+  <!--
+  <button ion-button block class="google-auth-button" text-capitalize (click)="doGoogleLogin()">
+    <ion-icon name="logo-google"></ion-icon>
+    &nbsp;&nbsp;&nbsp;{{'google_login' | translate}}
+  </button>
+  <button ion-button block class="twitter-auth-button" text-capitalize (click)="doTwitterLogin()">
+    <ion-icon name="logo-twitter"></ion-icon>
+    &nbsp;&nbsp;&nbsp;{{'twitter_login' | translate}}
+  </button>
+  -->
+  <br />
+  <p *ngIf="error" class="message error">{{error}}</p>
+</ion-content>

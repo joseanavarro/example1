@@ -1,0 +1,13 @@
+<!-- Generated template for the FlwItemComponent component -->
+
+<div class="w2w-tl-item-header">
+  <a (click)="photographerProfile(item.id_user)">
+    <ion-item no-lines>
+      <ion-avatar item-left>
+        <img [src]="getFlwAvatar(item)">
+      </ion-avatar>
+      <h2>{{ item.name }}&nbsp;{{ item.surname }}</h2>
+      <hr>
+    </ion-item>
+  </a>
+</div>

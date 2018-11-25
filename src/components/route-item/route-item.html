@@ -1,0 +1,11 @@
+<div class="w2w-tl-item" (click)="viewRoute(item)">
+
+  <div class="w2w-tl-thumb" (click)="viewRoute(item)" [ngStyle]="getStyle(item)">
+    <div class="w2w-pl-title">{{ item.title }}</div>
+  </div>
+
+  <div class="w2w-tl-item-description" (click)="viewRoute(item)">
+    {{ item.description | limitTo: 95 }}
+    <div class="w2w-tl-item-arrow"></div>
+  </div>
+</div>

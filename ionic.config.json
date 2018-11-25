@@ -1,0 +1,8 @@
+{
+  "name": "Walk2view",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "bdd1f0e9"
+}

@@ -1,0 +1,99 @@
+.register-view,
+.login-view,
+.signup-view,
+.forgot-password-view {
+    background: url("../img/fondo.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    ion-content:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+        display: block;
+    }
+    .login-logo {
+        max-width: 60%;
+        max-height: 10vh;
+    }
+    label.item.item-input {
+        background-color: #778077;
+        border: none;
+        margin: 2px;
+        input {
+            color: #ffffff;
+            @include placeholder {
+                color: #efd1cf;
+            }
+        }
+    }
+    .HorizontalRule {
+        height: 0;
+        margin: 2.5em 0;
+        text-align: center;
+        position: relative;
+        .HorizontalRuleL {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            height: 1px;
+            width: 45%;
+            background-color: #a3a7a8;
+        }
+        .HorizontalRuleR {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            height: 1px;
+            width: 45%;
+            background-color: #a3a7a8;
+        }
+        span {
+            color: #a3a7a8;
+            font-weight: bold;
+            font-size: 1.2em;
+            top: -0.7em;
+            position: relative;
+            padding: 1em;
+        }
+    }
+    .list-inset {
+        background-color: transparent;
+    }
+    .button.button-light.button-outline {
+        border-color: #fff;
+        color: #fff;
+    }
+}
+
+.walkthrough-view {
+    .top-content {
+        height: 75%;
+        text-align: center;
+        h1 {
+            color: $light;
+        }
+    }
+    .bottom-content {
+        height: 25%;
+        padding-top: 5px;
+        margin-top: 0px;
+        .button {
+            border: none;
+            color: $light;
+            font-weight: bolder;
+            font-size: 20px;
+            line-height: 20px;
+        }
+        .login.button {
+            background-color: rgba(lighten($positive, 10%), .35);
+        }
+        .sign-up.button {
+            background-color: rgba($stable, .20);
+        }
+    }
+}

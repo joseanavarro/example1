@@ -1,0 +1,11 @@
+<div class="profile-header" [ngStyle]="{'background-image':'url(' + user.background +')'}">
+  <div class="follow-button" *ngIf="!user.is_followed && !user.is_self && isLogged" (click)="follow(true)">+ Follow</div>
+  <div class="unfollow-button" *ngIf="user.is_followed && !user.is_self && isLogged" (click)="follow(false)">
+    <span class="following">Following</span>
+    <span class="unfollow">Unfollow</span>
+  </div>
+
+  <div class="profile-avatar" [ngStyle]="{'background-image':'url(' +  user.avatar  +')'}"></div>
+  <div class="profile-name">{{ user.name }} {{ user.surname }}</div>
+  <div class="profile-follower-stats">{{ user.followers }} {{"followers" | translate}} - {{ user.following }} {{"following" | translate}}</div>
+</div>

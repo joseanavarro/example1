@@ -1,0 +1,81 @@
+<ion-content scroll="true" class="walkthrough-view">
+  <div class="col col-center walkthrough-logo">
+    <p align="center">
+      <img src="assets/imgs/logo1.png" style="max-width: 60%;max-height: 15vh;">
+    </p>
+  </div>
+  <ion-slides padding-bottom class="slider-view" autoplay="3000" effect="slide" loop="false" pager="true"
+    paginationType="bullets">
+
+
+    <ion-slide class="slider-slide">
+      <p align="center" style="margin-top: 330px;">
+        <img src="assets/imgs/0.png">
+      </p>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="col col-center light bold" style="margin-top: 320px; color: white; font-size:30px;">
+        <p align="center">{{"intro_title" | translate}}</p>
+      </div>
+      <div class="col col-center" style="color: white;">
+        <p align="center">{{"intro_text" | translate}}</p>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <p align="center" style="margin-top: 260px;">
+        <img src="assets/imgs/camara1.png" class="slide-image">
+      </p>
+      <div class="col col-center" style="color: white;">
+        <p align="center">{{"help1" | translate}}</p>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <p align="center" style="margin-top: 260px;">
+        <img src="assets/imgs/2.png" class="slide-image">
+      </p>
+      <div class="col col-center" style="color: white;">
+        <p align="center">{{"help2" | translate}}</p>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <p align="center" style="margin-top: 260px;">
+        <img src="assets/imgs/3.png" class="slide-image">
+      </p>
+      <div class="col col-center" style="color: white;">
+        <p align="center">{{"help3" | translate}}</p>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <p align="center" style="margin-top: 260px;">
+        <img src="assets/imgs/4.png" class="slide-image">
+      </p>
+      <div class="col col-center" style="color: white;">
+        <p align="center">{{"help4" | translate}}</p>
+      </div>
+    </ion-slide>
+
+  </ion-slides>
+
+  <ion-footer>
+    <ion-row>
+      <ion-col no-padding>
+        <button ion-button full padding-bottom text-capitalize no-margin color="dark" class="btn-full-center" (click)="login()">{{'login'
+          | translate}}</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <!--ion-col no-padding>
+        <button ion-button full float-left padding-bottom text-capitalize no-margin color="light" class="btn-full-center" (click)="anonLogin()">{{'explore' | translate}}</button>
+      </ion-col-->
+      <ion-col no-padding>
+        <button ion-button full float-right padding-bottom text-capitalize no-margin color="light" class="btn-full-center"
+          (click)="register()">{{'register' | translate}}</button>
+      </ion-col>
+    </ion-row>
+  </ion-footer>
+</ion-content>

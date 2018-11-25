@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'edit_arrows' | translate}}</ion-title>
+    <ion-buttons end>
+      <a (click)="goBack()">
+        <ion-icon name="close-circle" class="micon"></ion-icon>
+      </a>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-card text-center *ngIf="loading">
+    <ion-spinner name="bubbles">{{'checking_hotspots' | translate}}</ion-spinner>
+  </ion-card>
+  <div *ngIf="!loading">
+    <img src="{{pano.thumbnail}}" style="max-width:100%;" />
+
+    <div padding>
+
+      <h3>{{pano.name}}</h3>
+      <br/> {{'select_hotspot_to_edit' | translate}}
+      <br/>
+      <br/>
+
+      <ion-grid>
+        <ion-row *ngFor="let item of hotspots; let odd=odd; let even=even " [ngClass]="{ odd: odd, even:even}">
+          <ion-col col-7 align-self-start>
+            {{item.name}}
+          </ion-col>
+          <ion-col align-self-end>
+            <ion-icon name="create" class="xicon" (click)="editArrow(item)"></ion-icon>
+          </ion-col>
+          <ion-col align-self-end>
+            <ion-icon name="trash" class="xicon" (click)="deleteArrow(item)"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <br/> {{'add_new_hotspots' | translate}}:
+      <br/>
+      <br/>
+      <button ion-button block class="button-dark" (click)="addArrow()">{{'add_arrow' | translate}}</button>
+    </div>
+  </div>
+</ion-content>

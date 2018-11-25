@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'edit_areas' | translate}}</ion-title>
+    <ion-buttons end>
+      <a (click)="goBack()">
+        <ion-icon name="close-circle" class="micon"></ion-icon>
+      </a>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="w2w-tl-location">
+
+    <div class="w2w-tl-item-icon-location"></div>
+    <br/> &nbsp;&nbsp;
+    <div class="w2w-item-title">{{ tour.title }}</div>
+  </div>
+  <div padding>
+    <button ion-button block class="button-dark" (click)="addArea()">{{'add_area' | translate}}</button>
+  </div>
+  <div class="w2w-item-note" padding>
+    &nbsp;
+    <ion-icon name="arrow-dropright" item-left>&nbsp;{{'touch_to_edit_areas' | translate}}</ion-icon>
+  </div>
+  <br/>
+  <br/>
+  <div class="w2w-tl-container">
+
+    <div class="w2w-tl-item" *ngFor="let area of areas">
+      <edit-area-thumb [tour]="tour" [area]="area"></edit-area-thumb>
+    </div>
+
+  </div>
+
+</ion-content>

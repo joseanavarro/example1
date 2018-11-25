@@ -1,0 +1,19 @@
+<ion-navbar hideBackButton="true">
+  <ion-row>
+    <ion-col [ngClass]="getClass(1)" (click)="clickAction(1, route)">
+      <div>
+        <ion-icon name="information-circle"></ion-icon>
+        <br/> {{'information' | translate}}</div>
+    </ion-col>
+    <ion-col [ngClass]="getClass(2)" (click)="clickAction(2, route)">
+      <div>
+        <ion-icon name="map"></ion-icon>
+        <br/> {{'map' | translate}}</div>
+    </ion-col>
+    <ion-col [ngClass]="getClass(3)" (click)="clickAction(3, route)">
+      <div>
+        <ion-icon name="list"></ion-icon>
+        <br/> {{'list' | translate}}</div>
+    </ion-col>
+  </ion-row>
+</ion-navbar>

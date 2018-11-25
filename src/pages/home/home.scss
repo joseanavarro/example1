@@ -1,0 +1,31 @@
+page-home {
+
+  // Iconos grandes para la página Home
+  .xxicon {
+    font-size: 75px;
+    color: color($colors, dark, base);
+  }
+
+  //-------------------
+  // Tabla responsiva
+  //-------------------
+  .square_sq {
+    float: left;
+    position: relative;
+    width: 46%;
+    padding-bottom: 40%;
+    /* = width for a 1:1 aspect ratio */
+    margin: 1.66%;
+    overflow: hidden;
+  }
+
+  .content_sq {
+    position: absolute;
+    height: 90%;
+    /* = 100% - 2*5% padding */
+    width: 90%;
+    /* = 100% - 2*5% padding */
+    padding: 5%;
+    text-align: center;
+  }
+}

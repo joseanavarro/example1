@@ -1,0 +1,32 @@
+page-about {
+  .about-content {
+    background-color: $theme-color-2;
+  }
+  .gem-form {
+    margin: 25% 3%;
+  }
+  .gem-form .button {
+    margin: 15px 5px;
+  }
+  .gem-form .item.item-input,
+  .gem-form .item.item-input .input-label,
+  .gem-form .item {
+    background: none;
+  }
+  .gem-bar-clear {
+    background: none;
+  }
+  .gem-splash-logo {
+    text-align: center;
+    margin: 20% 0 0 0;
+  }
+  .white,
+  .white *,
+  .gem-white,
+  .gem-white * {
+    color: #fff;
+  }
+  .button-dark {
+    background-color: $dark;
+  }
+}

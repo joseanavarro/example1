@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'publish_tasks' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card padding>
+    {{'publish_tasks_desc' | translate}}
+  </ion-card>
+
+  <ion-card text-center *ngIf="pubOnPlatform">
+    <br />
+    <h2>{{'publishing' | translate}}</h2>
+    <ion-spinner name="bubbles"></ion-spinner>
+  </ion-card>
+
+  <ng-container *ngIf="viewList">
+    <button ion-button block class="button-dark" (click)="startPub()" *ngIf="!pubOnPlatform">{{'start' |
+      translate}}</button>
+    <button ion-button block class="button-dark" (click)="endPub()" *ngIf="pubOnPlatform">{{'stop' | translate}}</button>
+    <br />
+    <ion-list>
+
+      <ion-item-group *ngFor="let task of pubTasks">
+
+        <ion-item-divider color="light">
+          <span class="toleft">
+            <img src="assets/imgs/check.svg" class="done-icon" *ngIf="task.progress == '-1'">
+            {{task.name }}
+          </span>
+          <span class="toright" *ngIf="!pubOnPlatform">
+            <div class="delete-icon" (click)="detelePubTour(task.taskid)"></div>
+          </span>
+        </ion-item-divider>
+
+        <ng-container *ngFor="let item of pubItems">
+          <ion-item *ngIf="task.taskid == item.taskid">
+            <ion-thumbnail item-left>
+              <img [src]="item.thumb">
+            </ion-thumbnail>
+            <h2>{{item.name}}</h2>
+            <button ion-button clear item-right *ngIf="item.status == 7">
+              <img src="assets/imgs/check.svg" class="done-icon"></button>
+            <button ion-button clear item-right *ngIf="item.status == 8">...</button>
+            <button ion-button clear item-right *ngIf="item.status == 9">
+              <img src="assets/imgs/loading_spinner.gif" class="done-icon"></button>
+          </ion-item>
+        </ng-container>
+
+      </ion-item-group>
+
+    </ion-list>
+
+  </ng-container>
+</ion-content>

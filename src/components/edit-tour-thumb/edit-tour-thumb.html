@@ -1,0 +1,7 @@
+<div class="w2w-tl-thumb" (click)="edit(pano, tour, connect1)" [ngStyle]="getPanoImage(pano)">
+  <div class="w2w-pl-title">{{ pano.name }}</div>
+</div>
+
+<div class="w2w-tl-item-description">
+  {{ pano.description | limitTo : 95 }}
+</div>

@@ -1,0 +1,21 @@
+<krpano onstart="loadInline">
+ <include url="plugins/webvr.xml" />
+		<plugin name="WebVR" mobilevr_fake_support="true" />	
+<plugin name="gyro" devices="html5" keep="true"
+        url="plugins/gyro2.js" 
+        enabled="true"
+        camroll="true"
+        friction="0.0"
+        touch_mode="full"
+        sensor_mode="1"
+        autocalibration="false"
+        onavailable=""
+        onunavailable=""
+        onenable=""
+        ondisable=""
+        />
+ <action name="loadInline">
+ loadxml(get(inlinexmlstring));
+ </action>
+
+</krpano>
