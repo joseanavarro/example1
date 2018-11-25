@@ -463,7 +463,20 @@ export class PlatformProvider {
                     .then(() => {
                       // Esperar un poco para permitir que se visualice el icono de subida
                       setTimeout(() => {
-                        this.panoUpload(result.item(0).panoid, result.item(0).pano, fileName, result.item(0).plt_taskid)
+                        // Si es iOS comprobar como empieza el campo pano, ya que en fotos hechas con la cámara externa
+                        // empiezan por 'file:///var' y en fotos seleccionadas desde la galería empiezan por
+                        // '/var'
+                        let panoPath: string;
+                        if (this.platform.is('ios')) {
+                          if (result.item(0).pano.startsWith("file://")) {
+                            panoPath = result.item(0).pano;
+                          } else {
+                            panoPath = "file://" + result.item(0).pano;
+                          }
+                        } else {
+                          panoPath = result.item(0).pano;
+                        }
+                        this.panoUpload(result.item(0).panoid, panoPath, fileName, result.item(0).plt_taskid)
                           .then(() => {
                             this.db.updateTaskStatus(result.item(0).panoid, result.item(0).taskid, AppConstants.ST_DONE)
                               .then(() => {
@@ -550,6 +563,10 @@ export class PlatformProvider {
     return new Promise((resolve, reject) => {
 
       // Comprobar si existe el fichero
+      // if (this.platform.is('ios')) {
+      //   panoFile = 'file://' + panoFile;
+      // }
+
       let filepath = panoFile.substring(0, panoFile.lastIndexOf('/') + 1);
       let filen = panoFile.substring(panoFile.lastIndexOf('/') + 1, panoFile.length);
 

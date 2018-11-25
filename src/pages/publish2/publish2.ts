@@ -17,6 +17,7 @@ import { UtilProvider } from "../../providers/util/util";
 export class Publish2Page {
 
   image: string;
+  origImage: string;
   name: string;
   ti: string;
   logt: string;
@@ -37,6 +38,7 @@ export class Publish2Page {
   ) {
     this.logt = 'Publish2Page';
     this.image = this.navParams.get("image");
+    this.origImage = this.navParams.get("origimg");
 
     this.translate.get("accept").subscribe(value => this.txtCloseButton = value);
     this.translate.get("photo_copied").subscribe(value => this.txtPhotoCopied = value);
@@ -63,13 +65,14 @@ export class Publish2Page {
       }
     } else {
       destimagePath = this.file.dataDirectory + AppConstants.PHOTO_FOLDER;
-      destimagePath = destimagePath.replace(/^file:\/\//, '');
     }
     this.logger.debug(this.ti, "Carpeta de copia: ", destimagePath)
     // Obtener el nombre del archivo de origen
-    let imageName = this.image.substring(this.image.lastIndexOf('/') + 1);
+    let tempStr = this.origImage.split('/');
+    let imageName = tempStr[tempStr.length - 1];
     // Obtener path de origen
-    let imagePath = this.image.replace(imageName, '');
+    let imagePath = this.platform.is('android') ? this.image.replace(imageName, '') :
+      'file://' + this.image.replace(imageName, '');
 
     let imageOrig = imageName.split('?')[0];
 
@@ -80,7 +83,13 @@ export class Publish2Page {
         this.storeNewTour()
           .then(() => {
             // Ahora creamos el registro de pano
-            destimagePath += '/' + destfilename;
+            if (this.platform.is('ios')) {
+              destimagePath += destfilename;
+              destimagePath = destimagePath.replace(/^file:\/\//, '');
+            } else {
+              destimagePath += '/' + destfilename;
+            }
+
             this.storeNewPano(destimagePath)
               .then(() => {
                 // Mostramos mensaje de información y saltamos a la página de 'Mis Fotos'

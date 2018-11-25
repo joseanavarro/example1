@@ -66,26 +66,37 @@ export class PublishPage {
     this.ti = "selectPanorama";
 
     this.logger.debug(this.ti, "Entrar en procedimiento ");
-    this.loading.present();
+    this.loading.p
+    let options0: CameraOptions;
 
-    const options0: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      allowEdit: false,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      correctOrientation: true,
-      saveToPhotoAlbum: false
-    };
+    if (this.platform.is('android')) {
+      options0 = {
+        quality: 100,
+        destinationType: this.camera.DestinationType.FILE_URI,
+        sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+        allowEdit: false,
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE,
+        correctOrientation: true,
+        saveToPhotoAlbum: false
+      };
+    } else {
+      options0 = {
+        sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      }
+    }
 
     this.camera.getPicture(options0).then((imageData) => {
       try {
         this.loading.dismiss();
         // En imageData obtenemos el path de la foto seleccionada
         this.logger.debug(this.ti, "imageData: ", imageData);
-        this.picture = imageData;
-        this.navCtrl.push("Publish2Page", { image: this.picture });
+        if (this.platform.is('android')) {
+          this.picture = imageData;
+        } else {
+          this.picture = imageData.replace(/^file:\/\//, '');
+        }
+        this.navCtrl.push("Publish2Page", { image: this.picture, origimg: imageData });
 
       } catch (e) {
         this.loading.dismiss();
