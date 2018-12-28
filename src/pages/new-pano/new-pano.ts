@@ -30,6 +30,7 @@ export class NewPanoPage {
   togglecolor: string;
   panoNum: number;
   photoDone: boolean;
+  photoDoing: boolean;
   taking_photo: string;
   taking_photo_desc: string;
   errCamera: string;
@@ -96,6 +97,7 @@ export class NewPanoPage {
     // Leer parámetros de entrada
     this.panoNum = this.navParams.get("panoId");
     this.globals.panoNum = this.panoNum;
+    this.photoDoing = false;
 
     this.logger.debug(this.ti, "Título del tour: " + this.globals.tourTitle);
     this.logger.debug(this.ti, "Título del panorama: " + this.panoTitle);
@@ -211,6 +213,7 @@ export class NewPanoPage {
     }
 
     this.loading.presentLoader(this.taking_photo + ' ' + this.taking_photo_desc, 10)
+    this.photoDoing = true;
 
     // Repetir cada 2 segundos, y hacerlo como máximo 30 veces
     this.checkInterval = setInterval(() => {
@@ -271,6 +274,7 @@ export class NewPanoPage {
           that.logger.debug(that.ti, "Registro de nuevo pano agregado a BD");
           that.globals.newPhotos = true;
           that.photoDone = true;
+          that.photoDoing = false;
 
           this.loading.presentLoader('', 0);
           let panoDoneMessage = '<img src="' + that.thumbnail + '" style="width:100%;" /> <br /><br />' + that.photoDoneDesc + '<br />';

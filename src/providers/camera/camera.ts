@@ -46,8 +46,9 @@ export class CameraProvider {
     return new Promise((resolve, reject) => {
 
       this.cameraApi.getCameraInfo()
-        .then((data) => {
+        .then((resp) => {
           this.logger.debug(this.ti, "Información correcta");
+          let data = JSON.parse(resp.data);
           this.cameraApi.startSession(data.model)
             .then((data) => {
               this.globals.cameraConnected = true;

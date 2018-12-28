@@ -19,12 +19,12 @@
       <b>{{tourTitle}}</b>
     </ion-label>
   </ion-item>
-  <br/>
+  <br />
   <ion-item>
     <ion-label stacked>{{'panorama_name' | translate}}</ion-label>
     <ion-input type="text" [(ngModel)]="panoTitle"></ion-input>
   </ion-item>
-  <br/>
+  <br />
   <ion-item no-lines>
     <ion-label>{{'improve_photo' | translate}}</ion-label>
     <ion-select [(ngModel)]="hdr" (ionChange)="updateHDR($event)">
@@ -32,13 +32,20 @@
       <ion-option value="hdr">HDR</ion-option>
     </ion-select>
   </ion-item>
-  <br/>
+  <br />
 
-  <button ion-button block class="button-dark" (click)="takePanorama()" *ngIf="!photoDone">{{'take_panorama' | translate}}</button>
+  <button ion-button block class="button-dark" (click)="takePanorama()" *ngIf="!photoDone">{{'take_panorama' |
+    translate}}</button>
   <ion-card text-center *ngIf="photoDone">
     <h2>
       {{'photo_done' | translate}}
     </h2>
+  </ion-card>
+  <ion-card text-center *ngIf="photoDoing">
+    <h2>
+      {{'taking_photo_desc' | translate}}
+    </h2>
+    <ion-spinner name="bubbles"></ion-spinner>
   </ion-card>
 
 

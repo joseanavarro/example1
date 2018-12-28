@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import { HTTP } from '@ionic-native/http';
 import 'rxjs/add/operator/map';
@@ -66,16 +66,15 @@ export class CameraApiProvider {
       let apiURL = this.cameraAPI + 'info';
       this.logger.debug(this.ti, "URL: ", apiURL);
 
-      this.http.get(apiURL)
-        .timeout(AppConstants.HTTP_TIMEOUT)
-        .subscribe((res) => {
+      this.nativeHttp.get(apiURL, {}, {})
+        .then((res) => {
           // Success          
           // Aquí debemos comprobar la licencia en base al
           // número de serie de la cámara
           this.logger.trace(this.ti, "Recibida respuesta de la cámara: ", JSON.stringify(res));
           resolve(res);
 
-        }, (err: HttpErrorResponse) => {
+        }, (err) => {
           reject(err);
         });
     });
@@ -99,10 +98,8 @@ export class CameraApiProvider {
         this.globals.camModel = 'V';
         this.setId(-1);
         resolve();
-
       }
       else {
-        // Si la cámara es Theta S, sí hay que abrir sesión
 
         let apiURL = this.cameraAPI + 'commands/execute';
         this.logger.debug(this.ti, "URL: ", apiURL);
@@ -111,13 +108,12 @@ export class CameraApiProvider {
           name: 'camera.startSession',
           parameters: {}
         };
-
-        this.nativeHttp.post(apiURL, sendData, {})
+        this.nativeHttp.setDataSerializer("json");
+        this.nativeHttp.post(apiURL, sendData, { 'content-type': 'application/json' })
           .then((resStr) => {
             this.logger.trace(this.ti, "Recibida respuesta de la cámara: ", resStr.data);
 
             let res = JSON.parse(resStr.data);
-
             if (res['name'] === "camera.startSession" && res['state'] === "done") {
               this.setId(res['results'].sessionId);
               resolve();
@@ -127,10 +123,11 @@ export class CameraApiProvider {
           }, (err) => {
             reject(err);
           });
-
       }
+
     });
   }
+
 
   /**
    * Preguntar estado de la cámara

@@ -13,7 +13,7 @@ export class AppConstants {
 
   // Valores de configuración por aplicación  *** Recordar cambiarlos para cada versión de App
   public static APP_ID = "PanocasaPro";
-  public static APP_VERS = "2.1.1";
+  public static APP_VERS = "2.1.2";
   //public static PHOTO_FOLDER = "walk2view/";
   public static PHOTO_FOLDER = "";
   public static FACEBOOK_APP_ID = 299410627576531;
@@ -23,6 +23,7 @@ export class AppConstants {
   public static GOOGLE_API_KEY = "AIzaSyC_hDYkUq69rtXKVfZdiDbBOB9aAP58nE4";
 
   // Constantes globales
+  // public static LOG_LEVEL = AppConstants.LOG_LEVEL_TRACE;
   public static LOG_LEVEL = AppConstants.LOG_LEVEL_ERROR;
   public static SERVER_LOG_LEVEL = AppConstants.LOG_LEVEL_ERROR;
   //public static SERVER_LOG_LEVEL = AppConstants.LOG_LEVEL_TRACE;
@@ -65,7 +66,7 @@ export class AppConstants {
 
   // Conexión con la cámara
   public static CAMERA_API = "http://192.168.1.1:80/osc/";
-  public static CAMERA_API_TEST = "http://192.168.1.36:4040/osc/";
+  public static CAMERA_API_TEST = "http://192.168.1.43:4040/osc/";
   //--- para pruebas
   // -- Simulador local con node.js
   public static CAMERA_API1 = "http://localhost:4040/osc/";
