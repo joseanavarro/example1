@@ -122,7 +122,6 @@
         <variable name="TWITTER_SECRET" value="evFVD1BWErW57YoqEpvV9fQXbS5tyyVybvELrnZiT7N8xR9Cl6" />
     </plugin>
     <plugin name="cordova-plugin-x-toast" spec="^2.6.0" />
-    <plugin name="cordova-plugin-wkwebview-engine" spec="git+https://github.com/driftyco/cordova-plugin-wkwebview-engine.git" />
     <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
         <variable name="APP_ID" value="393914641048875" />
         <variable name="APP_NAME" value="Walk2view2" />
@@ -149,7 +148,6 @@
     <allow-navigation href="http://192.168.1.37:8100" />
     <allow-navigation href="http://192.168.1.35:8100" />
     <plugin name="cordova.plugins.diagnostic" spec="^4.0.5" />
-    <plugin name="com.pylonproducts.wifiwizard" spec="~0.2.11" />
     <plugin name="info.protonet.imageresizer" spec="^0.1.1" />
     <plugin name="cordova-plugin-nativegeocoder" spec="^3.1.1">
         <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="Use geocoder service" />
@@ -172,6 +170,5 @@
     </plugin>
     <plugin name="cordova-plugin-advanced-http" spec="^2.0.1" />
     <plugin name="cordova-plugin-local-notification" spec="^0.9.0-beta.2" />
-    <engine name="android" spec="~7.0.0" />
-    <engine name="ios" spec="^4.5.4" />
+    <engine name="ios" spec="4.5.5" />
 </widget>

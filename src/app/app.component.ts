@@ -5,7 +5,6 @@ import { LangChangeEvent, TranslateService } from "@ngx-translate/core";
 import { FabContainer, Nav, Platform } from "ionic-angular";
 import { CacheService } from "ionic-cache";
 import { Pages } from "../models/Pages";
-import { HomePage } from "../pages/home/home";
 // Páginas de carga inmediata para mostrar en el menú
 import { WelcomePage } from "../pages/welcome/welcome";
 import { AppConstants } from "../providers/app-constants/app-constants";
@@ -229,24 +228,8 @@ export class MyApp {
             (err) => {
               this.logger.debug(this.ti, 'Conexión camara Error');
               this.st.set(AppConstants.ST_CAMERA_DISCONNECTING);
-              if (this.platform.is('android') && !this.globals.wifiCon) {
-                this.camService.disconnectFromThetaWifi(this.globals.cameraWifi)
-                  .then(() => {
-                    this.st.set(AppConstants.ST_IDLE);
-                    this.viewCameraConnectedButton = false;
-                    let view = this.nav.getActive();
-                    if (view.component.name === "CameraPage" ||
-                      view.component.name === "NewTourPage" ||
-                      view.component.name === "NewPanoPage") {
-                      // Recargar la página de conexión con la cámara
-                      this.nav.setRoot(HomePage);
-                    }
-                    this.util.presentAlert(this.disconnect_title, this.disconnect_text, this.closeButton);
-                  });
-              } else {
-                this.st.set(AppConstants.ST_IDLE);
-                this.viewCameraConnectedButton = false;
-              }
+              this.st.set(AppConstants.ST_IDLE);
+              this.viewCameraConnectedButton = false;
             });
       }
     }, 1000 * 5); // x segundos
@@ -353,25 +336,10 @@ export class MyApp {
     fab.close();
     // Desconectar wifi con la cámara si es Android, si es IOS avisar que el
     // usuario debe desconectar manualmente de la wifi
-    if (this.platform.is('android') && this.globals.wifiCon) {
-      this.camService.disconnectFromThetaWifi(this.globals.cameraWifi)
-        .then(() => {
-          this.st.set(AppConstants.ST_IDLE);
-          this.viewCameraConnectedButton = false;
-          let view = this.nav.getActive();
-          if (view.component.name === "CameraPage" ||
-            view.component.name === "NewTourPage" ||
-            view.component.name === "NewPanoPage") {
-            // Recargar la página de conexión con la cámara
-            this.nav.setRoot("CameraPage");
-            this.util.presentAlert(this.disconnect_title, this.disconnect_ios_text, this.closeButton);
-          }
-        });
-    } else {
-      this.st.set(AppConstants.ST_IDLE);
-      this.nav.setRoot("CameraPage");
-      this.util.presentAlert(this.disconnect_title, this.disconnect_ios_text, this.closeButton);
-    }
+    this.st.set(AppConstants.ST_IDLE);
+    this.nav.setRoot("CameraPage");
+    this.util.presentAlert(this.disconnect_title, this.disconnect_ios_text, this.closeButton);
+
   }
 
 

@@ -157,88 +157,33 @@ export class CameraPage {
 
     this.logger.debug(this.ti, "Is Android ", this.platform.is('android').toString());
 
-    if (this.platform.is('android') && this.globals.wifiCon) {
-      //--------------------------------------------
-      // Conectar por wifi con la cámara en Android
-      //--------------------------------------------
-      this.loading.presentLoader(this.connecting + ' ' + this.checking_wifi, 20);
-      //----------------------------------------------------------------------
-      // Lanzar tarea en segundo plano para comprobar conexión con la cámara
-      // e intentar conectar con ella
-      //----------------------------------------------------------------------
-      this.task = setInterval(() => {
-        // Comprobar estado de conexión
-        if (this.st.set(AppConstants.ST_CONNECTING_WIFI) && this.tries < 8) {
-
-          this.logger.info(this.ti, "INTENTO DE CONEXIÓN ", this.tries.toString());
-          this.camService.connectToCameraWifi()
-            .then((SSID) => {
-              this.SSID = JSON.stringify(SSID);
-              this.loading.presentLoader(this.connecting + ' ' + this.camera_control, 5);
-              let n: any;
-              // Ejecutar la conexión al API de la cámara pasado un segundo
-              n = setTimeout(() => {
-                this.st.set(AppConstants.ST_CONNECTING_CAMERA);
-                this.connectCameraAPI()
-                  .then(() => {
-                    this.logger.debug(this.ti, "Cámara conectada");
-                    this.st.set(AppConstants.ST_CAMERA_CONNECTED);
-                    clearInterval(this.task);
-                  },
-                    (err) => {
-                      this.logger.debug(this.ti, "Error conectando con la wifi de la cámara");
-                      this.st.set(AppConstants.ST_IDLE);
-                      this.tries += 1;
-                      this.errmsg = err;
-                    });
-              }, 1000);
-            },
-              (err) => {
-                this.logger.debug(this.ti, "Error conectando con la wifi de la cámara");
-                this.st.set(AppConstants.ST_IDLE);
-                this.tries += 1;
-                this.errmsg = err;
-              });
-        }
-        if (this.st.get() !== AppConstants.ST_CAMERA_CONNECTED && this.tries >= 8) {
-          clearInterval(this.task);
-          this.tries = 0;
+    this.loading.presentLoader(this.connecting + ' ' + this.camera_control, 5);
+    //--------------------------------------------------------------
+    // Conectar cámara,  La red Wifi debe estar ya conectada
+    //--------------------------------------------------------------
+    let n: any;
+    // Ejecutar la conexión al API de la cámara pasado un segundo
+    n = setTimeout(() => {
+      this.st.set(AppConstants.ST_CONNECTING_CAMERA);
+      this.connectCameraAPI()
+        .then(() => {
           this.loading.presentLoader('', 0);;
-          this.translate.get(this.errmsg).subscribe(value => {
-            let msg = value;
-            this.util.presentAlert(this.err_camera, msg, this.closeButton);
-          });
-        }
-      }, 1000 * 2);
-
-    } else {
-      this.loading.presentLoader(this.connecting + ' ' + this.camera_control, 5);
-      //--------------------------------------------------------------
-      // Conectar cámara,  La red Wifi debe estar ya conectada
-      //--------------------------------------------------------------
-      let n: any;
-      // Ejecutar la conexión al API de la cámara pasado un segundo
-      n = setTimeout(() => {
-        this.st.set(AppConstants.ST_CONNECTING_CAMERA);
-        this.connectCameraAPI()
-          .then(() => {
+          this.cameraError = false;
+          this.logger.debug(this.ti, "Cámara conectada");
+          this.st.set(AppConstants.ST_CAMERA_CONNECTED);
+          clearInterval(this.task);
+        },
+          (err) => {
             this.loading.presentLoader('', 0);;
-            this.cameraError = false;
-            this.logger.debug(this.ti, "Cámara conectada");
-            this.st.set(AppConstants.ST_CAMERA_CONNECTED);
-            clearInterval(this.task);
-          },
-            (err) => {
-              this.loading.presentLoader('', 0);;
-              this.cameraError = true;
-              this.loading.presentLoader(this.connecting + ' ' + this.camera_control, 5);
-              this.logger.debug(this.ti, "Error conectando con la cámara");
-              this.st.set(AppConstants.ST_IDLE);
-              this.tries += 1;
-              this.errmsg = err;
-            });
-      }, 1000);
-    }
+            this.cameraError = true;
+            this.loading.presentLoader(this.connecting + ' ' + this.camera_control, 5);
+            this.logger.debug(this.ti, "Error conectando con la cámara");
+            this.st.set(AppConstants.ST_IDLE);
+            this.tries += 1;
+            this.errmsg = err;
+          });
+    }, 1000);
+
   }
 
   /**
