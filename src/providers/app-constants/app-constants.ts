@@ -16,11 +16,11 @@ export class AppConstants {
   public static APP_VERS = "2.1.2";
   //public static PHOTO_FOLDER = "walk2view/";
   public static PHOTO_FOLDER = "";
-  public static FACEBOOK_APP_ID = 299410627576531;
+  public static FACEBOOK_APP_ID = ...;
   public static FACEBOOK_APP_NAME = "Panocasa Pro";
   public static PORTAL_ID = "50";
-  public static GOOGLE_ANALYTICS_TRACKING_ID = "UA-129384229-1";
-  public static GOOGLE_API_KEY = "AIzaSyC_hDYkUq69rtXKVfZdiDbBOB9aAP58nE4";
+  public static GOOGLE_ANALYTICS_TRACKING_ID = "...";
+  public static GOOGLE_API_KEY = "...";
 
   // Constantes globales
   // public static LOG_LEVEL = AppConstants.LOG_LEVEL_TRACE;
